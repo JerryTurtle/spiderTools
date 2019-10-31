@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务监控页面</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+
+<table class="table">
+	<caption>详情页url列表</caption>
+   <thead>
+      <tr>
+         <th> &nbsp;&nbsp;自增序号</th>
+         <th>task_id</th>
+          <th>状态</th>
+		  <th>type1</th>
+		  <th>type2</th>
+		  <th>type3</th>
+		  <th>type4</th>
+		  <th>type5</th>
+		  <th>插入时间</th>
+      </tr>
+   </thead>
+   <tbody>
+	{% for i in pageObj["data"] %}
+      <tr>
+         <td>&nbsp;&nbsp;{{i.id_}}</td>
+         <td>{{i.task_id}}</td>
+          {% if i.state == -1 %}
+          <td style="color: black">尚未就绪</td>
+          {% elif i.state == 0 %}
+          <td style="color: #e0a800">已就绪</td>
+          {% elif i.state == 1 %}
+          <td style="color: red">正在运行爬虫1</td>
+          {% elif i.state == 2 %}
+          <td style="color: red">正在运行爬虫2</td>
+          {% elif i.state == 3 %}
+          <td style="color: #007bff">爬虫1运行完毕</td>
+          {% elif i.state == 4 %}
+          <td style="color: #007bff">爬虫2运行完毕</td>
+          {% endif %}
+		  <td>{{i.type1}}</td>
+		  <td>{{i.type2}}</td>
+		  <td>{{i.type3}}</td>
+		  <td>{{i.type4}}</td>
+		  <td>{{i.type5}}</td>
+		  <td>{{i.insert_time}}</td>
+      </tr>
+   {% endfor %}
+   </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>查询页面</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+</head>
+<body>
+<div class="col-md-6 col-md-offset-3">
+	<div class="form-group">
+		<label class="control-label">url</label>
+		<input id="url" class="form-control" placeholder="请输入地址">
+		<label class="control-label">规则类型</label>
+		<select id="rule_type" class="form-control">
+			<option>正则</option>
+			<option>xpath</option>
+		</select>
+		<label class="control-label">rules</label>
+		<textarea id="rule" rows="2" class="form-control" placeholder="请输入"></textarea>
+		<label class="control-label">测试结果</label>
+		</br>
+		<label id="result" class="control-label text-info"></label>
+		</br>
+		<button class="form-control btn-primary" onclick="data_test();">点击测试</button>
+	</div>
+</div>
+</body>
+<!--<body>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">原文地址</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<input type="text" class="form-control" id="detail_URI" placeholder="请输入原文地址">-->
+				<!--</div>-->
+				<!--<label id = "detail_URI_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">索引号</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="index_number" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="index_number" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "index_number_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">发文机关</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="organization" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="organization" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "organization_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">发文字号</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="file_number" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="file_number" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "file_number_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">作者</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="author" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="author" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "author_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">主题词</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="keywords" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="keywords" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "keywords_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">主题分类</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="subject" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="subject" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "subject_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">成文日期</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="create_date" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="create_date" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "create_date_l" class = "col-md-3" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">发布日期</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="release_date" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="release_date" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "release_date_l" class = "col-md-3" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1"></div>-->
+		<!--<div class = "form-group col-md-9">-->
+				<!--<label class = "col-md-2" style="color: black;padding-top: 10px;padding-bottom: 10px">实施日期</label>-->
+				<!--<div class = "col-md-6">-->
+					<!--<textarea id="enforcement_date" rows="3" cols="100">test</textarea>-->
+					<!--&lt;!&ndash;<input type="text" class="form-control" id="enforcement_date" placeholder="请输入xpath或正则">&ndash;&gt;-->
+				<!--</div>-->
+				<!--<label id = "enforcement_date_l" class = "" style="padding-top: 10px;padding-bottom: 10px">-->
+				<!--</label>-->
+	<!---->
+		<!--</div>-->
+		<!--<div class = "col-md-2"></div>-->
+	<!--</div>-->
+
+	<!--<div class = "row">-->
+		<!--<div class = "col-md-1">-->
+		<!--</div>-->
+		<!--<div class = "col-md-1">-->
+			<!--<input type="text" class="form-control" id="task_id" placeholder="task_id">-->
+		<!--</div>-->
+
+		<!--<div class = "form-group col-md-2">-->
+			<!--<button class="btn-primary" onclick="select_task()";>查询</button>-->
+			<!--<button class="btn-primary" onclick="update_rules()";>添加</button>-->
+			<!--<button class="btn-primary" onclick="delete_rules()";>删除</button>-->
+			<!--<button class="btn-primary" onclick="get_detail()";>测试</button>-->
+		<!--</div>-->
+		<!--<div class = "col-md-8"></div>-->
+	<!--</div>-->
+
+
+<!--</body>-->
+
+<script>
+
+	//var BASE_URL = "http://zcquery.data.ckcest.cn";
+	var BASE_URL = "http://127.0.0.1:5000";
+	function data_test() {
+		var rules = new Object();
+		rules.rule = $("#rule").val();
+		rules.url = $("#url").val();
+		if($("#rule_type").val() == "正则"){
+			rules.rule_type = 1;
+		}else{
+			rules.rule_type = 2;
+		}
+		var data = JSON.stringify(rules);
+		$.ajax({
+			method:"POST",
+			url:BASE_URL+"/data/test/",
+			data:data,
+			success:function (data) {
+				$("#result").text(data);
+			},
+			error:function (jqXHR) {
+				alert("发生错误："+jqXHR.status);
+
+			}
+		})
+
+		
+	}
+
+	function select_task() {
+
+
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/tools/showrules/"+$("#task_id").val(),
+        	success:function(data){
+				var obj = JSON.parse(data);
+				console.log(data);
+				$("#detail_URI_l").val("查询成功");
+				$("#index_number").val(obj["rules_index_number"]);
+				$("#organization").val(obj["rules_organization"]);
+				$("#file_number").val(obj["rules_file_number"]);
+				$("#keywords").val(obj["rules_keywords"]);
+				$("#subject").val(obj["rules_subject"]);
+				$("#create_date").val(obj["rules_create_date"]);
+				$("#release_date").val(obj["rules_release_date"]);
+				$("#enforcement_date").val(obj["rules_enforcement_date"]);
+				$("#invalid_data").val(obj["rules_invalid_data"]);
+				$("#author").val(obj["rules_author"]);
+				//$("#author").val("rules_author");
+				alert("查询成功");
+     
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+
+
+	}
+
+	function get_detail(){
+		var xpath = new Object();
+		xpath.detail_URI = $("#detail_URI").val();
+		xpath.index_number = $("#index_number").val();
+		xpath.organization = $("#organization").val();
+		xpath.file_number = $("#file_number").val();
+		xpath.keywords = $("#keywords").val();
+		xpath.subject = $("#subject").val();
+		xpath.create_date = $("#create_date").val();
+		xpath.release_date = $("#release_date").val();
+		xpath.enforcement_date = $("#enforcement_date").val();
+		xpath.invalid_data = $("#invalid_data").val();
+		xpath.author = $("#author").val();
+		var data = JSON.stringify(xpath)
+
+
+		$.ajax({
+        	type:"POST",
+			data: data,
+        	url:BASE_URL+"/test/xpathcontent",
+        	dataType:"JSON",
+        	success:function(data){
+				//var obj = JSON.parse(data);
+				$("#detail_URI_l").text("获取成功");
+				$("#index_number_l").text(data.index_number);
+				$("#organization_l").text(data.organization);
+				$("#file_number_l").text(data.file_number);
+				$("#keywords_l").text(data.keywords);
+				$("#subject_l").text(data.subject);
+				$("#create_date_l").text(data.create_date);
+				$("#release_date_l").text(data.release_date);
+				$("#enforcement_date_l").text(data.enforcement_date);
+				$("#invalid_data_l").text(data.invalid_data);
+				$("#author_l").text(data.author);
+
+
+       			
+				alert("测试成功");
+     
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+
+	}
+
+	function update_rules(){
+		var xpath = new Object();
+		xpath.rules_detail_URI = $("#detail_URI").val();
+		xpath.rules_index_number = $("#index_number").val();
+		xpath.rules_organization = $("#organization").val();
+		xpath.rules_file_number = $("#file_number").val();
+		xpath.rules_keywords = $("#keywords").val();
+		xpath.rules_subject = $("#subject").val();
+		xpath.rules_create_date = $("#create_date").val();
+		xpath.rules_release_date = $("#release_date").val();
+		xpath.rules_enforcement_date = $("#enforcement_date").val();
+		xpath.rules_invalid_data = $("#invalid_data").val();
+		xpath.rules_author = $("#author").val();
+		var data = JSON.stringify(xpath)
+
+
+		$.ajax({
+        	type:"POST",
+			data: data,
+        	url:BASE_URL+"/tools/updaterules/"+$("#task_id").val(),
+        	dataType:"JSON",
+        	success:function(data){
+				//var obj = JSON.parse(data); 
+				alert("更新成功");
+     
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+
+	}
+
+
+	function delete_rules(){
+		var xpath = new Object();
+		xpath.rules_detail_URI = $("#detail_URI").val();
+		xpath.rules_index_number = $("#index_number").val();
+		xpath.rules_organization = $("#organization").val();
+		xpath.rules_file_number = $("#file_number").val();
+		xpath.rules_keywords = $("#keywords").val();
+		xpath.rules_subject = $("#subject").val();
+		xpath.rules_create_date = $("#create_date").val();
+		xpath.rules_release_date = $("#release_date").val();
+		xpath.rules_enforcement_date = $("#enforcement_date").val();
+		xpath.rules_invalid_data = $("#invalid_data").val();
+		xpath.rules_author = $("#author").val();
+		var data = JSON.stringify(xpath)
+
+
+		$.ajax({
+        	type:"POST",
+			data: data,
+        	url:BASE_URL+"/tools/deleterules/"+$("#task_id").val(),
+        	dataType:"JSON",
+        	success:function(data){
+				//var obj = JSON.parse(data); 
+				alert("更新成功");
+
+     
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+
+	}
+
+
+</script>
+</html>

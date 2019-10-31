@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>查询页面</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+<div class="row">
+    <div class="form-group col-md-6 col-md-offset-3">
+        <h2 id="{{task_id}}" class="text-info ">
+        任务{{task_id}}启动选项
+        </h2>
+        </br>
+        <h3 id = "state1" class="control-label">状态:</h3>
+        <button  class="btn-primary form-control" onclick="start_spider1({{task_id}})";>点击启动爬虫阶段一</button>
+        <h3 id = "state2" class="control-label">状态:</h3>
+        <button class="btn-primary form-control" onclick="start_spider2({{task_id}})";>点击启动爬虫阶段二</button>
+        <h3 id = "state3" class="control-label">状态:</h3>
+        <button class="btn-primary form-control" onclick="start_spider2_add({{task_id}})";>点击启动爬虫阶段二补充爬取</button>
+        </div>
+</div>
+
+</body>
+
+<script>
+
+	var BASE_URL = "http://zcquery.data.ckcest.cn";
+
+	function start_spider1(task_id){
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/celery/spider1/"+task_id,
+        	success:function(data){
+				//var obj = JSON.parse(data);
+				$("#state1").text("状态:任务"+data+"，爬虫1成功启动");
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+	}
+
+		function start_spider2(task_id){
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/celery/spider2/"+task_id,
+        	success:function(data){
+				//var obj = JSON.parse(data);
+				$("#state2").text("状态:任务"+data+"，爬虫2成功启动");
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+	}
+
+
+	function start_spider2_add(task_id){
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/celery/spider2add/"+ task_id ,
+        	success:function(data){
+				//var obj = JSON.parse(data);
+				$("#state3").text("状态:任务"+data+"，爬虫2重试成功启动");
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+	}
+
+</script>
+</html>

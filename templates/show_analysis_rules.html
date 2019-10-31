@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据提取规则工具</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <input id = 'task_id' type="hidden" value="{{task_id}}">
+	<table class="table table-hover">
+	<caption style="text-align: center" >
+        <strong style="font-size: large">
+            任务{{task_id}} 数据提取规则列表
+        </strong>
+        <a href="/../datatest" target="_blank">数据提取测试小工具</a>
+    </caption>
+   <thead>
+      <tr>
+          <th>字段含义</th>
+          <th>字段名</th>
+          <th>规则</th>
+          <th>操作</th>
+      </tr>
+   </thead>
+        <tbody>
+        {% for i in data %}
+              <tr id="{{i.id_}}">
+                  <td>&nbsp;&nbsp;{{i.meaning}}</td>
+                  <td>&nbsp;&nbsp;{{i.rule_name}}</td>
+                  <td>&nbsp;&nbsp;{{i.rule}}</td>
+                  <th>
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="values({{i.id_}});">删除</button>
+                      <!--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addModal" onclick="values({{i.id_}});"></button>-->
+                  </th>
+
+              </tr>
+        {% endfor %}
+        </tbody>
+   <!--<tbody>-->
+   <!--{% if rules_organization  %}-->
+	<!--{% for i in rules_organization %}-->
+      <!--<tr id="{{i}}">-->
+          <!--<td>&nbsp;&nbsp;发文机关</td>-->
+          <!--<td>&nbsp;&nbsp;rules_organization</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+          <!--<th>删除</th>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+   <!--{% if rules_subject %}-->
+   	<!--{% for i in rules_subject %}-->
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;主题分类</td>-->
+          <!--<td>&nbsp;&nbsp;rules_subject</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+   <!--{% if rules_keywords %}-->
+   	<!--{% for i in rules_keywords %}-->
+
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;主题词</td>-->
+          <!--<td>&nbsp;&nbsp;rules_keywords</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+
+   <!--{% if rules_file_number %}-->
+   	<!--{% for i in rules_file_number %}-->
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;发文号</td>-->
+          <!--<td>&nbsp;&nbsp;rules_file_number</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+
+   <!--{% if rules_create_date %}-->
+   	<!--{% for i in rules_create_date %}-->
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;成文日期</td>-->
+          <!--<td>&nbsp;&nbsp;rules_create_date</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+
+   <!--{% if rules_release_date %}-->
+   	<!--{% for i in rules_release_date %}-->
+
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;发布日期</td>-->
+          <!--<td>&nbsp;&nbsp;rules_release_date</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+
+   <!--{% if rules_enforcement_date %}-->
+   	<!--{% for i in rules_enforcement_date %}-->
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;实施日期</td>-->
+          <!--<td>&nbsp;&nbsp;rules_enforcement_date</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+
+   <!--{% if rules_index_number %}-->
+   	<!--{% for i in rules_index_number %}-->
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;索引号</td>-->
+          <!--<td>&nbsp;&nbsp;rules_index_number</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+
+   <!--{% if rules_author %}-->
+   	<!--{% for i in rules_author %}-->
+
+      <!--<tr>-->
+          <!--<td>&nbsp;&nbsp;作者</td>-->
+          <!--<td>&nbsp;&nbsp;rules_author</td>-->
+         <!--<td>&nbsp;&nbsp;{{i}}</td>-->
+      <!--</tr>-->
+   <!--{% endfor %}-->
+   <!--{% endif %}-->
+
+   <!--</tbody>-->
+</table>
+
+
+<!--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="values(11);">删除</button>-->
+    <input type="hidden" id="id">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <h4 class="modal-title" id="exampleModalLabel">确认框</h4>
+   </div>
+   <div class="modal-body">
+    <form>
+    <div class="form-group">
+      <label  class="control-label">确定删除此条规则？</label>
+     </div>
+    </form>
+   </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+    <button type="button" class="btn btn-primary" onclick="delete_rules();">确认</button>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addModal" onclick="values(11);">添加规则</button>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <h4 class="modal-title" id="addModalLabel">输入框</h4>
+   </div>
+   <div class="modal-body">
+    <form>
+    <div class="form-group">
+      <label  class="control-label">选择规则</label>
+        <select class="form-control" id="rule_name">
+			<option>rules_organization</option>
+			<option>rules_subject</option>
+			<option>rules_keywords</option>
+			<option>rules_file_number</option>
+			<option>rules_create_date</option>
+            <option>rules_release_date</option>
+            <option>rules_enforcement_date</option>
+            <option>rules_invalid_date</option>
+            <option>rules_index_number</option>
+            <option>rules_author</option>
+		</select>
+        <label >字段含义</label>
+        <select class="form-control" disabled>
+            <option id="meaning">发文机关</option>
+        </select>
+        <label >规则类型</label>
+        <select class="form-control" id="rule_type">
+            <option>xpath</option>
+            <option>正则</option>
+        </select>
+        <label >规则</label>
+        <textarea class="form-control" id="rule" rows="3" cols="70"></textarea>
+     </div>
+    </form>
+   </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+    <button type="button" class="btn btn-primary" onclick="add_rule();">提交</button>
+   </div>
+  </div>
+ </div>
+</div>
+
+</body>
+<script type="text/javascript">
+function values(ID)
+{
+    $("#id").val(ID);
+}
+BASE_URL = "http://zcquery.data.ckcest.cn";
+function delete_rules() {
+    id_=$("#id").val();
+    $.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/mysql/delete/rule/"+id_,
+        	success:function(data){ 
+				alert("测试成功");
+				$('#exampleModal').modal('hide');
+				window.location.reload();
+     
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+
+}
+
+window.onload=function(){
+		$("#rule_name").change(function(){
+		 	var opt=$("#rule_name").val();
+		 	console.log(opt);
+		 	switch(opt){
+                case 'rules_organization':
+                    $("#meaning").text("发文机关");
+                    break;
+                case 'rules_subject':
+                    $("#meaning").text("主题分类");
+                    break;
+                case 'rules_keywords':
+                    $("#meaning").text("主题词");
+                    break;
+                case 'rules_file_number':
+                    $("#meaning").text("发文号");
+                    break;
+                case 'rules_create_date':
+                    $("#meaning").text("成文日期");
+                    break;
+                case 'rules_release_date':
+                    $("#meaning").text("发布日期");
+                    break;
+                case 'rules_enforcement_date':
+                    $("#meaning").text("实施日期");
+                    break;
+                case 'rules_invalid_date':
+                    $("#meaning").text("失效日期");
+                    break;
+                case 'rules_index_number':
+                    $("#meaning").text("索引号");
+                    break;
+                case 'rules_author':
+                    $("#meaning").text("作者");
+                    break;
+                default:
+                    $("#meaning").text("");
+            }
+		});
+
+	}
+
+
+	function add_rule(){
+		var xpath = new Object();
+		xpath.rule_name = $("#rule_name").val();
+		xpath.meaning = $("#meaning").val();
+		xpath.rule_type = $("#rule_type").val();
+		xpath.rule = $("#rule").val();
+		xpath.task_id = $("#task_id").val();
+		var data = JSON.stringify(xpath)
+		$.ajax({
+        	type:"POST",
+			data: data,
+        	url:BASE_URL+"/mysql/add/rule/",
+        	dataType:"JSON",
+        	success:function(data){
+                $('#addModal').modal('hide');
+				window.location.reload();
+				alert("测试成功");
+     
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+
+	}
+
+</script>
+</html>

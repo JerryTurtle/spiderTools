@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爬虫启动信息填写</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="row">
+    <div class="form-group col-md-6 col-md-offset-3">
+        <h3 style="">任务{{psti.task_id}}爬虫启动信息填写</h3>
+        </br>
+        <label class = 'control-label'>爬虫类型编号</label>
+        <select class = 'form-control' id = 'spider_type'>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <label class = 'control-label'>爬虫类型名</label>
+        <select class = 'form-control' disabled>
+                <option id="type_name">直接输入列表页url</option>
+        </select>
+        <div class="showing" id="1">
+            <label class = 'control-label'>接口的url</label>
+            <textarea id="urls" class="form-control" rows="10" placeholder="请输入接口的url">{{psti.urls}}</textarea>
+            <label class = 'control-label'>rules_url(提取详情页url的xpath)</label>
+            <input id="1_rules_url" type="text" class="form-control" placeholder="请输入xpath" value="{{psti.rules_url}}">
+            <label class = 'control-label'>url_head(用于生成详情页url的url头部)</label>
+            <input id="1_url_head" type="text" id="1_url_head" class="form-control" placeholder="请输入url_head" value="{{psti.url_head}}">
+        </div>
+        <div class="hidden" id="2">
+            <label class = 'control-label'>start_url</label>
+            <input id="start_url" type="text" class="form-control" placeholder="请输入主页地址" value="{{psti.start_url}}">
+            <label class = 'control-label'>rules_next_page(下一页元素的xpath)</label>
+            <input id="rules_next_page" type="text" class="form-control" placeholder="请输入xpath" value="{{psti.rules_next_page}}">
+            <label class = 'control-label'>rules_url(提取详情页url的xpath)</label>
+            <input id="2_rules_url" type="text" class="form-control" placeholder="请输入xpath" value="{{psti.rules_url}}">
+            <label class = 'control-label'>url_head(用于生成详情页url的url头部)</label>
+            <input id="2_url_head" type="text" id="2_url_head" class="form-control" placeholder="请输入url_head" value="{{psti.url_head}}">
+        </div>
+        <div class="hidden" id =3>
+            <label class = 'control-label'>ajax_url(接口url)</label>
+            <textarea id="ajax_url" class="form-control" rows="2" placeholder="请输入接口的url">{{psti.ajax_url}}</textarea>
+            <label class = 'control-label'>发送的数据</label>
+            <textarea id="ajax_data" class="form-control" rows="2" placeholder="请输入接口发送的数据">{{psti.ajax_data}}</textarea>
+            <label class = 'control-label'>rules_url(提取详情页url的xpath)</label>
+            <input id="3_rules_url" type="text" class="form-control" placeholder="请输入xpath" value="{{psti.rules_url}}">
+            <label class = 'control-label'>url_head(用于生成详情页url的url头部)</label>
+            <input id="3_url_head" type="text" id="3_url_head" class="form-control" placeholder="请输入url_head" value="{{psti.url_head}}">
+
+        </div>
+        <div class="rows">&nbsp;</div>
+        <button class="form-control btn-primary" onclick="change_task({{psti.task_id}});">提交</button>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    BASE_URL = "http://zcquery.data.ckcest.cn";
+    window.onload = function () {
+        $("#spider_type").change(function () {
+            var spider_type = $("#spider_type").val();
+            switch (spider_type) {
+                case '1':
+                    $("#type_name").text("直接输入列表页url");
+                    $("#2").attr('class','hidden');
+                    $("#3").attr('class','hidden');
+                    $("#1").attr('class','showing');
+                    break;
+                case '2':
+                    $("#type_name").text("点击下一页");
+                    $("#1").attr('class','hidden');
+                    $("#3").attr('class','hidden');
+                    $("#2").attr('class','showing');
+                    break;
+                case '3':
+                    $("#type_name").text("使用接口");
+                    $("#1").attr('class','hidden');
+                    $("#2").attr('class','hidden');
+                    $("#3").attr('class','showing');
+                    break;
+                default:
+                    $("#type_name").text("直接输入列表页url");
+            }
+
+        })
+
+    }
+
+    function change_task(task_id) {
+        var task = new Object();
+        task.spider_type = $("#spider_type").val();
+        console.log($("#2_rules_url").val());
+        switch (task.spider_type) {
+            case '1':
+                {
+                task.urls = $("#urls").val();
+                task.rules_url = $("#1_rules_url").val();
+                task.url_head = $("#1_url_head").val();
+                break;
+                }
+            case '2':
+                {
+                task.start_url = $("#start_url").val();
+                task.rules_next_page = $("#rules_next_page").val();
+                task.rules_url = $("#2_rules_url").val();
+                task.url_head = $("#2_url_head").val();
+                break;
+                }
+            case '3':
+                {
+                task.ajax_url = $("#ajax_url").val();
+                task.ajax_data = $("#ajax_data").val();
+                task.rules_url = $("#3_rules_url").val();
+                task.url_head = $("#3_url_head").val();
+                break;
+                }
+        }
+        var data = JSON.stringify(task);
+
+        $.ajax(
+            {
+                type:'POST',
+                data:data,
+                url:BASE_URL + '/spider/choice/' +task_id,
+
+                success:function (data) {
+                    alert("提交成功");
+                },
+                error:function (jqXHR) {
+                    alert("发生错误："+ jqXHR.status);
+
+                }
+            }
+        )
+    }
+</script>
+</html>

@@ -1,0 +1,76 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>详情页url查询页面</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+<div>
+
+	<table class="table table-hover">
+	<caption style="text-align: center">
+        <strong style="font-size: large">
+            任务{{task_id}} 详情页url列表(共{{count}}条记录)
+        </strong>
+    </caption>
+   <thead>
+      <tr>
+         <th> &nbsp;&nbsp;自增序号</th>
+         <th>task_id</th>
+		  <th>部委</th>
+		  <th>类型</th>
+		  <!--<th>type3</th>-->
+		  <!--<th>type4</th>-->
+		  <!--<th>type5</th>-->
+		  <th>url</th>
+		  <th>插入时间</th>
+		  <th>来源列表页url</th>
+      </tr>
+   </thead>
+   <tbody>
+	{% for i in pagination.items %}
+      <tr>
+         <td>&nbsp;&nbsp;{{i.id_}}</td>
+         <td>{{i.task_id}}</td>
+		  <td>{{i.type1}}</td>
+		  <!--<td>{{i.type2}}</td>-->
+		  <!--<td>{{i.type3}}</td>-->
+		  <!--<td>{{i.type4}}</td>-->
+		  <td>{{i.type5}}</td>
+		  <td><a target = "_blank" href={{i.url}}>{{i.url}}</a></td>
+		  <td>{{i.insert_time}}</td>
+		  <td><a target = "_blank" href = {{i.from_url}}>{{i.from_url}}</a></td>
+      </tr>
+   {% endfor %}
+   </tbody>
+</table>
+
+{#    宏定义形式实现的分页导航#}
+        {% import "_macros.html" as macros %}
+        {% if pagination %}
+            <div class="pagination">
+                {{ macros.pagination_widget(pagination, 'get_detail_urls',task_id) }}
+            </div>
+        {% endif %}
+
+	</div>
+
+
+
+</body>
+
+<script>
+
+
+
+</script>
+</html>

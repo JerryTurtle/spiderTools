@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>查询页面</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+	<div class = "row">
+		<div class = "col-md-2"></div>
+		<div class = "form-group col-md-3">
+			<div>
+				<label style="color: red">查询Mysql中抓取到的详情页url的数量</label>
+				<input type="text" class="form-control" id="mysqlUrlcountTaskid" placeholder="请输入task_id">
+				<label id = "mysqlUrlcount" for="name">详情页url数量为：</label>
+				<div class = "row"></div>
+				<button class="btn-primary" onclick="getMysqlUrlCount()";>查询</button>
+			</div>		
+		</div>
+
+		<div class = "col-md-2"></div>
+
+		<div class = "col-md-3">
+			<div>
+				<label style="color: red">查询Mongodb中抓取到的详情页的数量</label>
+				<input type="text" class="form-control" id="mongoCountTaskid" placeholder="请输入task_id">
+				<label id = "mongoCount" for="name">抓取到的详情页数量为：</label>
+				<div class = "row"></div>
+				<button class="btn-primary" onclick="getMongoCount()";>查询</button>
+			</div>
+		</div>
+
+	</div>
+
+	<br/>  
+
+	<div class = "row">
+		<div class = "col-md-2"></div>
+		<div class = "form-group col-md-3">
+			<div>
+				<label style="color: red">查询Mysql中列表页url</label>
+				<input type="text" class="form-control" id="TaskUrlTaskid" placeholder="请输入task_id">
+				<label id = "TaskUrl" for="name">列表页url:</label>
+				<div class = "row"></div>
+				<button class="btn-primary" onclick="getTaskUrl()";>查询</button>
+			</div>
+    		
+		</div>
+		<div class = "col-md-2"></div>
+		<div class = "form-group col-md-3">
+			<div>
+				<label style="color: red">查询Redis中任务的数量</label>
+				<label id = "redisCount">Redis中的任务数量为：</label>
+				<div class = "row"></div>
+				<button class="btn-primary" onclick="getRedisCount()";>查询</button>
+			</div>
+    		
+		</div>
+
+
+
+
+	</div>
+
+<br/>  
+		<div class = "row">
+		<div class = "form-group col-md-2">
+			
+		</div>
+		<div class = "form-group col-md-2">
+			<div>
+				<label style="color: red">删除Mysql中的详情页url</label>
+    			
+
+			</div>
+			<div>
+				<input type="text" class="form-control" id="deleteUrlTaskid" placeholder="请输入task_id">
+				<button class="btn-primary" onclick="deleteUrl()";>删除</button>
+			</div>
+    		
+		</div>
+		<div class = "form-group col-md-3">
+			
+		</div>
+
+		<div class = "form-group col-md-3">
+			<div>
+				<label style="color: red">删除Mongo中已采集的详情页</label>
+    			
+			</div>
+			<div>
+				<input type="text" class="form-control" id="data1" placeholder="请输入task_id">
+				<button class="btn-primary" onclick="deleteUrl()";>删除</button>
+			</div>
+    		
+		</div>
+
+	</div>
+
+
+</body>
+
+<script>
+	var BASE_URL = "http://zcquery.data.ckcest.cn";
+
+	function getMysqlUrlCount(){
+	$("#mysqlUrlcount").empty;
+	$.ajax({
+        type:"GET",
+        url:BASE_URL+"/count/detailurl/"+$("#mysqlUrlcountTaskid").val(),
+        dataType:"text",
+        success:function(data){
+           
+				$("#mysqlUrlcount").text("详情页url数量："+data);
+           
+        },
+        error:function(jqXHR){
+           alert("发生错误："+ jqXHR.status);
+        }
+	});
+
+	}
+
+
+
+	function getTaskUrl(){
+		$("#TaskUrl").empty();
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/get/taskurl/"+$("#TaskUrlTaskid").val(),
+        	dataType:"text",
+        	success:function(data){
+
+				$("#TaskUrl").text("列表页url:  "+data);
+
+           
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+
+
+		});
+	}
+
+
+	function deleteUrl(){
+		$("#urlcount").empty;
+		$("#url").empty;
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/delete/detailurl/"+$("#deleteUrlTaskid").val(),
+        	dataType:"text",
+        	success:function(data){
+       			
+				alert("删除成功");
+     
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        }
+		});
+
+
+	}
+
+
+	function getMongoCount(){
+		$("#mongoCount").empty;
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/get/mongocount/"+$("#mongoCountTaskid").val(),
+        	dataType:"text",
+        	success:function(data){
+           
+				$("#mongoCount").text("抓取到的详情页数量为："+data);
+           
+        	},
+        	error:function(jqXHR){
+           	alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+	}
+
+
+
+	function getMongoCount(){
+		$("#mongoCount").empty;
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/get/mongocount/"+$("#mongoCountTaskid").val(),
+        	dataType:"text",
+        	success:function(data){
+           
+				$("#mongoCount").text("抓取到的详情页数量为："+data);
+           
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+	}
+
+
+
+
+	function getRedisCount(){
+		$("#mongoCount").empty;
+		$.ajax({
+        	type:"GET",
+        	url:BASE_URL+"/get/rediscount",
+        	dataType:"text",
+        	success:function(data){
+           
+				$("#redisCount").text("Redis中的任务数量为："+data);
+           
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+
+	}
+
+</script>
+</html>

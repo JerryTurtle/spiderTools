@@ -1,81 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>查询页面</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-
-<script>
-$(document).ready(function(){
-  $("button").click(function(){
-    $("p").hide();
-  });
-});
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-function analysis(){
-	var str = new String();
-	var list = new Array()
-	str = $("#data").val();
-	console.log(str);
-	list = str.split("&");
-	for(let i=0,len=list.length;i<len;i++){
-		$("#data_table").append("<tr><td>"+list[i]+"</td><td>"+"test"+"</td>");
-	}
-
-
-
-
-}
-</script>
 </head>
 
 <body>
+<div class="col-md-3 col-md-offset-3">
+<table class="table  table-hover">
+	<caption></caption>
+	<thead>
+	<th>工具列表</th>
+	</thead>
+	<tbody>
+	<tr>
+		<td><a href="./tools/sql" target="_blank">数据库查询工具</a></td>
+	</tr>
+	<tr>
+		<td><a href="./tools/data/test" target="_blank">数据处理测试工具</a></td>
+	</tr>
+	<tr>
+		<td><a href="./tools/spider/start" target="_blank">爬虫启动工具</a></td>
+	</tr>
+	<tr>
+		<td><a href="./tools/show/urls" target="_blank">详情页url查询工具</a></td>
+	</tr>
+	<tr>
+		<td><a href="./tools/monitor/task" target="_blank">任务监控工具</a></td>
+	</tr>
 
-	<div class = "row">
-		<div class = "form-group col-md-3 col-md-offset-3">
-			<div>
-				<label for="name">数据</label>
-    			<input type="text" class="form-control" id="data" placeholder="请输入数据">
-
-			</div>
-			<div>
-				<button class="btn-primary" onclick="analysis()";>解析数据</button>
-			</div>
-    		
-		</div>
-
-
-	</div>
-
-	<div class = "row">
-
-
-<table class="table col-md-3 col-md-offset-3">
-	<caption>表单字段</caption>
-   <thead>
-      <tr>
-         <th>key</th>
-         <th>value</th>
-      </tr>
-   </thead>
-   <tbody id = "data_table">
-      <tr>
-         <td>Tanmay</td>
-         <td>Bangalore</td>
-      </tr>
-
-   </tbody>
+	</tbody>
 </table>
-
-
-
 	</div>
 
 
-<!-- 	<div class = "row">
-		<div class = "col-md-3 col-md-offset-3">
-<button class = "btn btn-primary" type="button" data-loading-text="Loading..." >点击</button>
-		</div>
-	</div> -->
 </body>
+
+<script>
+
+
+
+</script>
 </html>

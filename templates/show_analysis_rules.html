@@ -14,7 +14,7 @@
         <strong style="font-size: large">
             任务{{task_id}} 数据提取规则列表
         </strong>
-        <a href="/../datatest" target="_blank">数据提取测试小工具</a>
+        <a href="/tools/data/test" target="_blank">数据提取测试小工具</a>
     </caption>
    <thead>
       <tr>
@@ -212,14 +212,14 @@ function values(ID)
 {
     $("#id").val(ID);
 }
-BASE_URL = "http://zcquery.data.ckcest.cn";
+
 function delete_rules() {
     id_=$("#id").val();
     $.ajax({
         	type:"GET",
-        	url:BASE_URL+"/mysql/delete/rule/"+id_,
+        	url:"/api/delete/rule?id_="+id_,
         	success:function(data){ 
-				alert("测试成功");
+				alert("删除成功");
 				$('#exampleModal').modal('hide');
 				window.location.reload();
      
@@ -228,7 +228,6 @@ function delete_rules() {
            		alert("发生错误："+ jqXHR.status);
         	}
 		});
-
 
 }
 
@@ -286,13 +285,12 @@ window.onload=function(){
 		$.ajax({
         	type:"POST",
 			data: data,
-        	url:BASE_URL+"/mysql/add/rule/",
+        	url:"/api/add/rule",
         	dataType:"JSON",
         	success:function(data){
                 $('#addModal').modal('hide');
 				window.location.reload();
-				alert("测试成功");
-     
+				alert("添加成功");
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);

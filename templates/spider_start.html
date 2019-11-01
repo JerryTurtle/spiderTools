@@ -28,12 +28,11 @@
 
 <script>
 
-	var BASE_URL = "http://zcquery.data.ckcest.cn";
 
 	function start_spider1(task_id){
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/celery/spider1/"+task_id,
+        	url:"/api/celery/spider1?task_id="+task_id,
         	success:function(data){
 				//var obj = JSON.parse(data);
 				$("#state1").text("状态:任务"+data+"，爬虫1成功启动");
@@ -47,7 +46,7 @@
 		function start_spider2(task_id){
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/celery/spider2/"+task_id,
+        	url:"/api/celery/spider2?task_id="+task_id,
         	success:function(data){
 				//var obj = JSON.parse(data);
 				$("#state2").text("状态:任务"+data+"，爬虫2成功启动");
@@ -63,7 +62,7 @@
 	function start_spider2_add(task_id){
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/celery/spider2add/"+ task_id ,
+        	url:"/api/celery/spider2add?task_id="+ task_id ,
         	success:function(data){
 				//var obj = JSON.parse(data);
 				$("#state3").text("状态:任务"+data+"，爬虫2重试成功启动");

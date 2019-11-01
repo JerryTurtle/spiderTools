@@ -10,7 +10,7 @@ mysql_db = cf.get(cf_mysql_name, 'mysql_db')
 mysql_host = cf.get(cf_mysql_name, 'mysql_host')
 mysql_port = cf.get(cf_mysql_name, 'mysql_port')
 mysql_user = cf.get(cf_mysql_name, 'mysql_user')
-mysql_passwd = cf.get(cf_mysql_name, 'mysql_password')
+mysql_password = cf.get(cf_mysql_name, 'mysql_password')
 
 
 class Config(object):
@@ -23,10 +23,13 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     DEBUG = True
+    JSON_ADD_STATUS = True
+    JSON_DATETIME_FORMAT = '%d/%m/%Y %H:%M:%S'
+    JSON_STATUS_FIELD_NAME = 'status'
     # PASSWORD = quote('123456a?')
     CELERY_BROKER_URL = 'redis://:{}@120.79.147.1:6379/0'.format(quote('123456a?'))
     # CELERY_TASK_SERIALIZER = 'pickle'
     # CELERY_RESULT_SERIALIZER = 'pickle'
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://'+ mysql_user+ ':' \
-                              + mysql_passwd +'@' + mysql_host +':' \
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + mysql_user + ':' \
+                              + mysql_password + '@' + mysql_host + ':' \
                               + mysql_port + '/' + mysql_db

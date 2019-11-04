@@ -54,6 +54,7 @@
 		<div class = "form-group col-md-3">
 			<div>
 				<label style="color: red">查询Redis中任务的数量</label>
+                <input type="text" class="form-control" id="redisCountTaskid" placeholder="请输入task_id">
 				<label id = "redisCount">Redis中的任务数量为：</label>
 				<div class = "row"></div>
 				<button class="btn-primary" onclick="getRedisCount()";>查询</button>
@@ -93,8 +94,8 @@
     			
 			</div>
 			<div>
-				<input type="text" class="form-control" id="data1" placeholder="请输入task_id">
-				<button class="btn-primary" onclick="deleteUrl()";>删除</button>
+				<input type="text" class="form-control" id="deleteMongoTaskid" placeholder="请输入task_id">
+				<button class="btn-primary" onclick="deleteMongo()";>删除</button>
 			</div>
     		
 		</div>
@@ -105,24 +106,19 @@
 </body>
 
 <script>
-	var BASE_URL = "http://zcquery.data.ckcest.cn";
 
 	function getMysqlUrlCount(){
 	$("#mysqlUrlcount").empty;
 	$.ajax({
         type:"GET",
-        url:BASE_URL+"/count/detailurl/"+$("#mysqlUrlcountTaskid").val(),
-        dataType:"text",
-        success:function(data){
-           
-				$("#mysqlUrlcount").text("详情页url数量："+data);
-           
+        url:"/api/count/urls?task_id="+$("#mysqlUrlcountTaskid").val(),
+        success:function(data){ 
+				$("#mysqlUrlcount").text("详情页url数量："+data['count']);     
         },
         error:function(jqXHR){
            alert("发生错误："+ jqXHR.status);
         }
 	});
-
 	}
 
 
@@ -131,19 +127,13 @@
 		$("#TaskUrl").empty();
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/get/taskurl/"+$("#TaskUrlTaskid").val(),
-        	dataType:"text",
+        	url:"/get/taskurl/"+$("#TaskUrlTaskid").val(),
         	success:function(data){
-
-				$("#TaskUrl").text("列表页url:  "+data);
-
-           
+				$("#TaskUrl").text("列表页url:  "+data);           
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);
         	}
-
-
 		});
 	}
 
@@ -153,19 +143,14 @@
 		$("#url").empty;
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/delete/detailurl/"+$("#deleteUrlTaskid").val(),
-        	dataType:"text",
+        	url:"/api/delete/urls?task_id="+$("#deleteUrlTaskid").val(),
         	success:function(data){
-       			
 				alert("删除成功");
-     
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);
         }
 		});
-
-
 	}
 
 
@@ -173,59 +158,47 @@
 		$("#mongoCount").empty;
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/get/mongocount/"+$("#mongoCountTaskid").val(),
-        	dataType:"text",
-        	success:function(data){
-           
-				$("#mongoCount").text("抓取到的详情页数量为："+data);
-           
+        	url:"/api/count/mongo?task_id="+$("#mongoCountTaskid").val(),
+        	success:function(data){ 
+				$("#mongoCount").text("抓取到的详情页数量为："+data['count']);   
         	},
         	error:function(jqXHR){
            	alert("发生错误："+ jqXHR.status);
         	}
 		});
-
 	}
-
-
-
-	function getMongoCount(){
-		$("#mongoCount").empty;
-		$.ajax({
-        	type:"GET",
-        	url:BASE_URL+"/get/mongocount/"+$("#mongoCountTaskid").val(),
-        	dataType:"text",
-        	success:function(data){
-           
-				$("#mongoCount").text("抓取到的详情页数量为："+data);
-           
-        	},
-        	error:function(jqXHR){
-           		alert("发生错误："+ jqXHR.status);
-        	}
-		});
-
-	}
-
-
 
 
 	function getRedisCount(){
 		$("#mongoCount").empty;
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/get/rediscount",
-        	dataType:"text",
-        	success:function(data){
-           
-				$("#redisCount").text("Redis中的任务数量为："+data);
-           
+        	url:"/api/count/redis?task_id="+$("#redisCountTaskid").val(),
+       
+        	success:function(data){ 
+				$("#redisCount").text("Redis中的任务数量为："+data['count']);   
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);
         	}
 		});
 
+	}
+
+
+
+	function deleteMongo(){
+		$("#deleteMongoTaskid").empty;
+		$.ajax({
+        	type:"GET",
+        	url:"/api/delete/mongo?task_id="+$("#deleteMongoTaskid").val(),
+        	success:function(data){
+				alert("删除成功");
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        }
+		});
 	}
 
 </script>

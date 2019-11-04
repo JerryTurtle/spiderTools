@@ -117,11 +117,11 @@ def data_test():
 
 
 # 获取已经爬取的详情页url的数量
-@app.route('/api/count/urls/<int:task_id>')
-def get_detail_url_count(task_id):
-    # task_id = int(request.args.get('task_id') or 1)
+@app.route('/api/count/urls')
+def get_detail_url_count():
+    task_id = int(request.args.get('task_id') or 1)
     count = PolicySpiderUrlInfo.query.filter_by(task_id=task_id).count()
-    return str(count)
+    return json_response(count=str(count))
 
 
 # 删除某一task的所有的详情页url
@@ -135,10 +135,23 @@ def del_detail_url():
     return json_response(msg='success')
 
 
+@app.route('/api/delete/mongo')
+def del_mongo_pages():
+    task_id = int(request.args.get('task_id') or 0)
+    mongo_client = pymongo.MongoClient(host=mongo_host, port=int(mongo_port))
+    db_auth = mongo_client.admin
+    db_auth.authenticate(mongo_user, mongo_password)
+    mongo_db_ = mongo_client[mongo_db]
+    mongo_table_ = mongo_db_[mongo_table]
+    mongo_table_.remove({"task_id": task_id})
+    mongo_client.close()
+    return json_response(msg='success')
+
+
 # 获取mongodb中已经采集的数据的数量
-@app.route('/api/count/mongo/<int:task_id>')
-def get_mongo_count(task_id):
-    # task_id = int(request.args.get('task_id') or 0)
+@app.route('/api/count/mongo')
+def get_mongo_count():
+    task_id = int(request.args.get('task_id') or 0)
     mongo_client = pymongo.MongoClient(host=mongo_host, port=int(mongo_port))
     db_auth = mongo_client.admin
     db_auth.authenticate(mongo_user, mongo_password)
@@ -146,7 +159,7 @@ def get_mongo_count(task_id):
     mongo_table_ = mongo_db_[mongo_table]
     mongo_row = mongo_table_.count({"task_id": task_id})
     mongo_client.close()
-    return str(mongo_row)
+    return json_response(count=str(mongo_row))
 
 
 # 获取redis中剩余的任务数量
@@ -155,7 +168,7 @@ def get_redis_count():
     task_id = int(request.args.get('task_id') or 0)
     r = redis.StrictRedis(host=redis_host, port=int(redis_port), db=int(redis_db), password=redis_password)
     length = r.llen(str(task_id))
-    return json_response(length=str(length))
+    return json_response(count=str(length))
 
 
 # 数据采集数量监控接口

@@ -193,7 +193,7 @@ class ProxyMiddleware(object):
         request.headers["Proxy-Authorization"] = generate_proxy_auth()
         request.meta['proxy'] = "http://forward.xdaili.cn:80"
         request.headers["Connection"] = "keep-alive"
-        #request.headers["Connection"] = "keep-alive"
+        # request.headers["Connection"] = "keep-alive"
 
 
 

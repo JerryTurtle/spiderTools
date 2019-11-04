@@ -78,7 +78,12 @@ def get_content(list_url, time_delay=3):
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get(list_url)
     time.sleep(int(time_delay))
+    try:
+        driver.switch_to.frame(0)
+    except Exception as e:
+        print(e)
     content = driver.page_source
+    print(content)
     driver.close()
     return content
 
@@ -93,6 +98,7 @@ def get_content_request(list_url):
     r = requests.get(list_url, headers=headers,
                      proxies=proxy, verify=False, allow_redirects=False)
     r.encoding = 'UTF-8'
+    print(r.text)
     return r.text
 
 
@@ -107,7 +113,71 @@ def data_test():
         rule = data['rule']
         html = get_content_request(url)
         page = etree.HTML(html)
-        if rule_type == 1:
+        if rule_type == 2:
+            result = page.xpath(rule)
+        else:
+            result = re.findall(html, rule)
+        return json_response(result=result, msg='success')
+    else:
+        return json_response(status_=405, msg='fail', error_description='Wrong request method!')
+
+
+# 爬虫阶段一，点击下一页测试工具
+@app.route('/api/test/next_page', methods=['GET', 'POST'])
+@as_json
+def next_page_test():
+    time_delay = 3
+    if request.method == 'POST':
+        data = json.loads(request.get_data())
+        start_url = data['start_url']
+        rule_type = int(data['rule_type'])
+        rules_next_page = data['rules_next_page']
+        extension = data['extension']
+        if rule_type == 2:
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--disable-gpu")
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            driver = webdriver.Chrome(chrome_options=chrome_options)
+            driver.get(start_url)
+            time.sleep(int(time_delay))
+            if extension is not None and extension != '':
+                eval(extension)
+            try:
+                driver.find_element_by_partial_link_text(rules_next_page).click()
+                time.sleep(time_delay)
+                return json_response(result=1, msg='success')
+            except Exception as e:
+                print(e)
+                try:
+                    driver.switch_to.frame(0)
+                    driver.find_element_by_partial_link_text(rules_next_page).click()
+                    return json_response(result=1, msg='success')
+                except Exception as e:
+                    print(e)
+                    return json_response(result=0, msg='success')
+                return json_response(result=0, msg='success')
+            finally:
+                driver.close()
+        else:
+            pass
+    else:
+        return json_response(status_=405, msg='fail', error_description='Wrong request method!')
+
+
+# 提取数据测试接口
+@app.route('/api/test/get_urls', methods=['GET', 'POST'])
+@as_json
+def urls_test():
+    if request.method == 'POST':
+        data = json.loads(request.get_data())
+        url = data['url']
+        rule_type = int(data['rule_type'])
+        rule = data['rule']
+        html = get_content(url)
+        page = etree.HTML(html)
+        if rule_type == 2:
             result = page.xpath(rule)
         else:
             result = re.findall(html, rule)
@@ -124,6 +194,12 @@ def get_detail_url_count():
     return json_response(count=str(count))
 
 
+def get_detail_url_count(task_id):
+    # task_id = int(request.args.get('task_id') or 1)
+    count = PolicySpiderUrlInfo.query.filter_by(task_id=task_id).count()
+    return str(count)
+
+
 # 删除某一task的所有的详情页url
 @app.route('/api/delete/urls')
 def del_detail_url():
@@ -135,6 +211,7 @@ def del_detail_url():
     return json_response(msg='success')
 
 
+# 删除mongo中的数据
 @app.route('/api/delete/mongo')
 def del_mongo_pages():
     task_id = int(request.args.get('task_id') or 0)
@@ -160,6 +237,17 @@ def get_mongo_count():
     mongo_row = mongo_table_.count({"task_id": task_id})
     mongo_client.close()
     return json_response(count=str(mongo_row))
+
+
+def get_mongo_count(task_id):
+    mongo_client = pymongo.MongoClient(host=mongo_host, port=int(mongo_port))
+    db_auth = mongo_client.admin
+    db_auth.authenticate(mongo_user, mongo_password)
+    mongo_db_ = mongo_client[mongo_db]
+    mongo_table_ = mongo_db_[mongo_table]
+    mongo_row = mongo_table_.count({"task_id": task_id})
+    mongo_client.close()
+    return str(mongo_row)
 
 
 # 获取redis中剩余的任务数量
@@ -235,6 +323,7 @@ def spider_choice():
         elif data['spider_type'] == '2':
             policy_spider_task_info.start_url = data['start_url']
             policy_spider_task_info.rules_next_page = data['rules_next_page']
+
         else:
             policy_spider_task_info.ajax_url = data['ajax_url']
             policy_spider_task_info.ajax_data = data['ajax_data']
@@ -330,7 +419,8 @@ def start_spider1():
                          type2=policy_spider_task_info.type2,
                          type3=policy_spider_task_info.type3,
                          type4=policy_spider_task_info.type4,
-                         type5=policy_spider_task_info.type5)
+                         type5=policy_spider_task_info.type5,
+                         extension_1=policy_spider_task_info.extension_1)
         with app.app_context():
             celery_start_spider3.delay(task_id, info_dict)
         return str(task_id)
@@ -386,6 +476,7 @@ def start_spider2_add():
 def get_all_content(policy_spider_task_url, time_delay=5):
     start_url = policy_spider_task_url['start_url']
     rules_next_page = policy_spider_task_url['rules_next_page']
+    extension_1 = policy_spider_task_url['extension_1']
     content_list = []
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
@@ -395,6 +486,8 @@ def get_all_content(policy_spider_task_url, time_delay=5):
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get(start_url)
     time.sleep(int(time_delay))
+    if extension_1 is not None and extension_1 != '':
+        eval(extension_1)
     try:
         while True:
             content = driver.page_source
@@ -472,10 +565,22 @@ def tools_sql_html():
     return render_template("tools_sql.html")
 
 
-# 数据分析规则录入工具页面
+# 数据分析规则测试工具页面
 @app.route('/tools/data/test')
 def test_data_html():
     return render_template("tools_data_test.html")
+
+
+# 爬虫阶段一获取urls测试页面
+@app.route('/tools/urls/test')
+def test_urls_html():
+    return render_template("tools_urls_test.html")
+
+
+# 爬虫阶段一获取urls测试页面
+@app.route('/tools/next/test')
+def test_next_html():
+    return render_template("tools_next_page_test.html")
 
 
 # 爬虫启动工具

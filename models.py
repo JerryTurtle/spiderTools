@@ -60,6 +60,7 @@ class PolicySpiderTaskInfo(db.Model):
     ajax_url = db.Column(db.Text)
     ajax_data = db.Column(db.Text)
     insert_time = db.Column(db.DateTime)
+    extension_1 = db.Column(db.String(512))
 
     # def __init__(self, task_id, type1, type2, type3, type4, type5):
     #     self.task_id = task_id

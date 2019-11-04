@@ -11,7 +11,7 @@
 <body>
 <div class="col-md-6 col-md-offset-3">
 	<div class="form-group">
-        <h4 class="control-label" style="text-align: center">数据解析测试工具</h4>
+        <h4 class="control-label" style="text-align: center">爬虫阶段一获取urls测试工具</h4>
 		<label class="control-label">url</label>
 		<input id="url" class="form-control" placeholder="请输入地址">
 		<label class="control-label">规则类型</label>
@@ -25,7 +25,7 @@
 		</br>
 		<label id="result" class="control-label text-info"></label>
 		</br>
-		<button class="form-control btn-primary" onclick="data_test();">点击测试</button>
+		<button class="form-control btn-primary" onclick="urls_test();">点击测试</button>
 	</div>
 </div>
 </body>
@@ -33,7 +33,7 @@
 
 <script>
 
-	function data_test() {
+	function urls_test() {
 		var rules = new Object();
 		rules.rule = $("#rule").val();
 		rules.url = $("#url").val();
@@ -45,10 +45,11 @@
 		var data = JSON.stringify(rules);
 		$.ajax({
 			method:"POST",
-			url:"/api/test/analysis_data",
+			url:"/api/test/get_urls",
 			data:data,
 			success:function (data) {
 				$("#result").text(data['result']);
+				alert("获取成功");
 			},
 			error:function (jqXHR) {
 				alert("发生错误："+jqXHR.status);
@@ -56,7 +57,7 @@
 			}
 		})
 
-		
+
 	}
 
 

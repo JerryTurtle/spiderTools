@@ -11,21 +11,23 @@
 <body>
 <div class="col-md-6 col-md-offset-3">
 	<div class="form-group">
-        <h4 class="control-label" style="text-align: center">数据解析测试工具</h4>
-		<label class="control-label">url</label>
-		<input id="url" class="form-control" placeholder="请输入地址">
+        <h4 class="control-label" style="text-align: center">爬虫阶段一获取urls测试工具</h4>
+		<label class="control-label">start_url</label>
+		<input id="start_url" class="form-control" placeholder="请输入地址">
 		<label class="control-label">规则类型</label>
 		<select id="rule_type" class="form-control">
             <option>xpath</option>
 			<option>正则</option>
 		</select>
-		<label class="control-label">rules</label>
-		<textarea id="rule" rows="2" class="form-control" placeholder="请输入"></textarea>
+		<label class="control-label">rules_next_page</label>
+		<textarea id="rules_next_page" rows="2" class="form-control" placeholder="请输入"></textarea>
+        <label class="control-label">extension</label>
+		<textarea id="extension" rows="2" class="form-control" placeholder="请输入"></textarea>
 		<label class="control-label">测试结果</label>
 		</br>
 		<label id="result" class="control-label text-info"></label>
 		</br>
-		<button class="form-control btn-primary" onclick="data_test();">点击测试</button>
+		<button class="form-control btn-primary" onclick="urls_test();">点击测试</button>
 	</div>
 </div>
 </body>
@@ -33,10 +35,11 @@
 
 <script>
 
-	function data_test() {
+	function urls_test() {
 		var rules = new Object();
-		rules.rule = $("#rule").val();
-		rules.url = $("#url").val();
+		rules.rules_next_page = $("#rules_next_page").val();
+		rules.start_url = $("#start_url").val();
+		rules.extension = $("#extension").val();
 		if($("#rule_type").val() == "正则"){
 			rules.rule_type = 1;
 		}else{
@@ -45,10 +48,15 @@
 		var data = JSON.stringify(rules);
 		$.ajax({
 			method:"POST",
-			url:"/api/test/analysis_data",
+			url:"/api/test/next_page",
 			data:data,
 			success:function (data) {
-				$("#result").text(data['result']);
+			    if(data['result']==1){
+			        alert("点击成功");
+                }
+			    else{
+			        alert("点击失败");
+                }
 			},
 			error:function (jqXHR) {
 				alert("发生错误："+jqXHR.status);
@@ -56,7 +64,7 @@
 			}
 		})
 
-		
+
 	}
 
 

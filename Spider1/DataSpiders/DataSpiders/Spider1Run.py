@@ -54,7 +54,7 @@ def GetTask(id):
             task_dict["type3"] = type3
             task_dict["type4"] = type4
             task_dict["type5"] = type5
-            task_dict["url"] = urls
+            task_dict["urls"] = urls
             task_dict["url_head"] = url_head
             task_dict["rules_url"] = rules_url
         #取出任务后，将认为状态更新为已完成

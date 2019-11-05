@@ -23,15 +23,24 @@ import requests
 import time
 import urllib
 import re
-
+import pymysql
 app = Flask(__name__)
 app.config.from_object(DevConfig)
-celery = Celery(app.name, broker=DevConfig.CELERY_BROKER_URL)
 db.init_app(app)
+celery = Celery(app.name, broker=DevConfig.CELERY_BROKER_URL)
+
 
 cf = configparser.ConfigParser()
 # configparser 用以读写配置文件
 cf.read('DatabaseConfig.ini', encoding='utf-8')
+
+cf_mysql_name = "MYSQL_TEST"
+# mysql
+mysql_db = cf.get(cf_mysql_name, 'mysql_db')
+mysql_host = cf.get(cf_mysql_name, 'mysql_host')
+mysql_port = cf.get(cf_mysql_name, 'mysql_port')
+mysql_user = cf.get(cf_mysql_name, 'mysql_user')
+mysql_passwd = cf.get(cf_mysql_name, 'mysql_password')
 
 # mongo
 cf_mongo_name = "MONGODB_TEST"
@@ -53,6 +62,16 @@ print(os.path.split(os.path.abspath('.'))[-1])
 
 orderno = 'ZF20191080074lV0fOf'
 secret = 'ac66770b075947eca6cb2f09dc776d00'
+
+
+# 执行sql
+def excute_sql(sql):
+    mysql_conn = pymysql.connect(mysql_host, mysql_user, mysql_passwd, mysql_db, int(mysql_port), charset="utf8")
+    mysql_cur = mysql_conn.cursor()
+    mysql_cur.execute(sql)
+    mysql_conn.commit()
+    mysql_cur.close()
+    mysql_conn.close()
 
 
 # 代理ip,身份验证签名生成
@@ -184,7 +203,7 @@ def urls_test():
             result = page.xpath(rule)
         else:
             result = re.findall(html, rule)
-        return json_response(result=result, msg='success')
+        return json_response(result=[result], msg='success')
     else:
         return json_response(status_=405, msg='fail', error_description='Wrong request method!')
 
@@ -340,11 +359,16 @@ def spider_choice():
 
 
 # 改变爬虫状态（state）
+# def change_task_state(task_id, state):
+#     policy_spider_task_info = PolicySpiderTaskInfo.query.filter_by(task_id=task_id).first()
+#     policy_spider_task_info.state = state
+#     db.session.add(policy_spider_task_info)
+#     db.session.commit()
+
+
 def change_task_state(task_id, state):
-    policy_spider_task_info = PolicySpiderTaskInfo.query.filter_by(task_id=task_id).first()
-    policy_spider_task_info.state = state
-    db.session.add(policy_spider_task_info)
-    db.session.commit()
+    sql = "UPDATE policy_spider_task_info SET state = %s WHERE task_id = %s"%(state,task_id)
+    excute_sql(sql)
 
 
 # 爬虫一celery任务
@@ -354,11 +378,12 @@ def celery_start_spider1(task_id):
         os.chdir("Spider1/DataSpiders/DataSpiders")
     print(os.path.dirname(__file__))
     os.system("python3 Spider1Run.py %s" % task_id)
-    change_task_state(task_id, 3)
+    print(os.path.dirname(__file__))
     if os.path.split(os.path.abspath('.'))[-1] == 'DataSpiders':
         os.chdir("../")
         os.chdir("../")
         os.chdir("../")
+    change_task_state(task_id, 3)
 
 
 # 爬虫二（爬虫阶段二）celery任务
@@ -369,11 +394,11 @@ def celery_start_spider2(task_id):
         os.chdir("Spider2/DataSpiders/DataSpiders")
     print(os.path.dirname(__file__))
     os.system("python3 Spider2Run.py %s" % task_id)
-    change_task_state(task_id, 4)
     if os.path.split(os.path.abspath('.'))[-1] == 'DataSpiders':
         os.chdir("../")
         os.chdir("../")
         os.chdir("../")
+    change_task_state(task_id, 4)
 
 
 # 爬虫二（爬虫阶段二）补充celery任务
@@ -384,11 +409,11 @@ def celery_start_spider2_add(task_id):
         os.chdir("Spider2/DataSpiders/DataSpiders")
     print(os.path.dirname(__file__))
     os.system("python3 Spider2Run_add.py %s" % task_id)
-    change_task_state(task_id, 4)
     if os.path.split(os.path.abspath('.'))[-1] == 'DataSpiders':
         os.chdir("../")
         os.chdir("../")
         os.chdir("../")
+    change_task_state(task_id, 4)
 
 
 # 爬虫三（爬虫阶段一，使用点击下一页获取详情页url）celery任务
@@ -408,9 +433,9 @@ def analysis_data(task_id):
         os.chdir("data_analysis/")
     print(os.path.dirname(__file__))
     os.system("python3 DataAnalysis.py %s" % task_id)
-    change_task_state(task_id, 6)
     if os.path.split(os.path.abspath('.'))[-1] == 'data_analysis':
         os.chdir("../")
+    change_task_state(task_id, 6)
 
 
 # 爬虫阶段一启动接口
@@ -671,6 +696,11 @@ def get_rules():
     task_id = int(request.args.get('task_id') or 1)
     rules_info = PolicyDataAnalysisRules.query.filter_by(task_id=task_id).all()
     return render_template('show_analysis_rules.html', data=rules_info, task_id=task_id)
+
+
+@app.route('/tools/generate/urls')
+def generate_urls():
+    return render_template('tools_generate_urls.html')
 
 
 if __name__ == '__main__':

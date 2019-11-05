@@ -35,7 +35,7 @@ class PolicySpider1(scrapy.Spider):
 
 
     # 初始化start_urls列表
-    urls = cf.get(cf_id, 'url')
+    urls = cf.get(cf_id, 'urls')
     for url in urls.split(';'):
         start_urls.append(url)
     print(start_urls)

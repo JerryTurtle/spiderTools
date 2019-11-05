@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>查询页面</title>
+	<title>获取urls测试</title>
 	<meta charset="UTF-8">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -21,6 +21,8 @@
 		</select>
 		<label class="control-label">rules</label>
 		<textarea id="rule" rows="2" class="form-control" placeholder="请输入"></textarea>
+        <label class="control-label">extension</label>
+		<textarea id="extension" rows="2" class="form-control" placeholder="请输入"></textarea>
 		<label class="control-label">测试结果</label>
 		</br>
 		<label id="result" class="control-label text-info"></label>
@@ -37,6 +39,7 @@
 		var rules = new Object();
 		rules.rule = $("#rule").val();
 		rules.url = $("#url").val();
+		rules.extension = $("#extension").val();
 		if($("#rule_type").val() == "正则"){
 			rules.rule_type = 1;
 		}else{

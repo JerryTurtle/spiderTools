@@ -10,6 +10,7 @@ from sqlalchemy import create_engine
 
 from sqlalchemy import Column, String, Integer, Text, DateTime
 from sqlalchemy.ext.declarative import declarative_base
+import sys
 Model = declarative_base()
 
 
@@ -379,5 +380,5 @@ class DataAnalysis(object):
 
 if __name__ == "__main__":
     t = DataAnalysis()
-    t.select_mongo_(task_id=2)
-
+    task_id = sys.argv[1]
+    t.select_mongo_(task_id=task_id)

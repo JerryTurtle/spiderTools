@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>查询页面</title>
+	<title>爬虫启动</title>
     <meta charset="UTF-8">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -22,6 +22,8 @@
         <button class="btn-primary form-control" onclick="start_spider2({{task_id}})";>点击启动爬虫阶段二</button>
         <h3 id = "state3" class="control-label">状态:</h3>
         <button class="btn-primary form-control" onclick="start_spider2_add({{task_id}})";>点击启动爬虫阶段二补充爬取</button>
+        <h3 id = "state3" class="control-label">状态:</h3>
+        <button class="btn-primary form-control" onclick="start_analysis({{task_id}})";>点击启动数据解析</button>
         </div>
 </div>
 
@@ -36,7 +38,13 @@
         	url:"/api/celery/spider1?task_id="+task_id,
         	success:function(data){
 				//var obj = JSON.parse(data);
-				$("#state1").text("状态:任务"+data+"，爬虫1成功启动");
+                if(data['msg']=='success'){
+                    alert("启动成功！");
+                    $("#state1").text("状态:任务"+data['task_id']+"，爬虫1成功启动");
+                }else{
+                    alert("启动失败！请检查是否录入启动数据！");
+                }
+
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);
@@ -50,7 +58,14 @@
         	url:"/api/celery/spider2?task_id="+task_id,
         	success:function(data){
 				//var obj = JSON.parse(data);
-				$("#state2").text("状态:任务"+data+"，爬虫2成功启动");
+                if(data['msg']=='success'){
+                    alert("启动成功！");
+                    $("#state2").text("状态:任务"+data['task_id']+"，爬虫2成功启动");
+                }else{
+                    alert("启动失败！");
+                    $("#state2").text("状态:爬虫2启动失败");
+                }
+
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);
@@ -67,6 +82,21 @@
         	success:function(data){
 				//var obj = JSON.parse(data);
 				$("#state3").text("状态:任务"+data+"，爬虫2重试成功启动");
+        	},
+        	error:function(jqXHR){
+           		alert("发生错误："+ jqXHR.status);
+        	}
+		});
+	}
+
+
+	function start_analysis(task_id){
+		$.ajax({
+        	type:"GET",
+        	url:"/api/celery/analysis?task_id="+task_id,
+        	success:function(data){
+				//var obj = JSON.parse(data);
+				$("#state1").text("状态:任务"+data+"，数据解析成功启动");
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);

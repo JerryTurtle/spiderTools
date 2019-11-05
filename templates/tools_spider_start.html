@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>查询页面</title>
+	<title>启动爬虫工具</title>
     <meta charset="UTF-8">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -55,12 +55,10 @@
 
 <script>
 
-	var BASE_URL = "http://zcquery.data.ckcest.cn";
-
 	function start_spider1(){
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/celery/spider1/"+$("#taskid1").val(),
+        	url:"/celery/spider1/"+$("#taskid1").val(),
         	success:function(data){
 				//var obj = JSON.parse(data);
 				$("#state1").text("状态:任务"+data+"，爬虫1成功启动");
@@ -75,7 +73,7 @@
 		function start_spider2(){
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/celery/spider2/"+$("#taskid2").val(),
+        	url:"/celery/spider2/"+$("#taskid2").val(),
         	success:function(data){
 				//var obj = JSON.parse(data);
 				$("#state2").text("状态:任务"+data+"，爬虫2成功启动");
@@ -91,7 +89,7 @@
 	function start_spider2_add(){
 		$.ajax({
         	type:"GET",
-        	url:BASE_URL+"/celery/spider2add/"+$("#taskid3").val(),
+        	url:"/celery/spider2add/"+$("#taskid3").val(),
         	success:function(data){
 				//var obj = JSON.parse(data);
 				$("#state3").text("状态:任务"+data+"，爬虫2重试成功启动");

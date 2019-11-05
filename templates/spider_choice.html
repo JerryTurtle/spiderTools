@@ -38,6 +38,8 @@
             <input id="2_rules_url" type="text" class="form-control" placeholder="请输入xpath" value="{{psti.rules_url}}">
             <label class = 'control-label'>url_head(用于生成详情页url的url头部)</label>
             <input id="2_url_head" type="text" id="2_url_head" class="form-control" placeholder="请输入url_head" value="{{psti.url_head}}">
+            <label class="control-label">extension</label>
+		    <textarea id="2_extension" rows="2" class="form-control" placeholder="请输入">{{psti.extension_1}}</textarea>
         </div>
         <div class="hidden" id =3>
             <label class = 'control-label'>ajax_url(接口url)</label>
@@ -105,6 +107,7 @@
                 task.rules_next_page = $("#rules_next_page").val();
                 task.rules_url = $("#2_rules_url").val();
                 task.url_head = $("#2_url_head").val();
+                task.extension = $("#2_extension").val();
                 break;
                 }
             case '3':

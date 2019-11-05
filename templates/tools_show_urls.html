@@ -38,10 +38,7 @@
 <script>
 
  function get_urls() {
-     var BASE_URL = "http://zcquery.data.ckcest.cn/mysql/show/urls?taskid=";
-
-
-     $("#mainframe").attr("src", BASE_URL+$("#task_id").val());
+     $("#mainframe").attr("src", "/show/urls?task_id="+$("#task_id").val());
      mainframe.window.location=url;
  }
 

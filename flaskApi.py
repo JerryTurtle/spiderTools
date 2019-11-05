@@ -69,7 +69,7 @@ def generate_proxy_auth():
 
 
 # 使用chromeDriver获取网页内容
-def get_content(list_url, time_delay=3):
+def get_content(list_url, extension, time_delay=5):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-gpu')
@@ -78,6 +78,8 @@ def get_content(list_url, time_delay=3):
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get(list_url)
     time.sleep(int(time_delay))
+    if extension is not None and extension != '':
+        eval(extension)
     try:
         driver.switch_to.frame(0)
     except Exception as e:
@@ -175,7 +177,8 @@ def urls_test():
         url = data['url']
         rule_type = int(data['rule_type'])
         rule = data['rule']
-        html = get_content(url)
+        extension = data['extension']
+        html = get_content(url,extension)
         page = etree.HTML(html)
         if rule_type == 2:
             result = page.xpath(rule)
@@ -323,7 +326,7 @@ def spider_choice():
         elif data['spider_type'] == '2':
             policy_spider_task_info.start_url = data['start_url']
             policy_spider_task_info.rules_next_page = data['rules_next_page']
-
+            policy_spider_task_info.extension_1 = data['extension']
         else:
             policy_spider_task_info.ajax_url = data['ajax_url']
             policy_spider_task_info.ajax_data = data['ajax_data']
@@ -397,16 +400,31 @@ def celery_start_spider3(task_id, policy_spider_task_info):
     change_task_state(task_id, 3)
 
 
+# 数据解析celery任务
+@celery.task(name="analysis_data")
+def analysis_data(task_id):
+    print(os.path.dirname(__file__))
+    if os.path.split(os.path.abspath('.'))[-1] == 'spiderTools':
+        os.chdir("data_analysis/")
+    print(os.path.dirname(__file__))
+    os.system("python3 DataAnalysis.py %s" % task_id)
+    change_task_state(task_id, 6)
+    if os.path.split(os.path.abspath('.'))[-1] == 'data_analysis':
+        os.chdir("../")
+
+
 # 爬虫阶段一启动接口
 @app.route('/api/celery/spider1')
 def start_spider1():
     task_id = int(request.args.get('task_id') or 0)
     policy_spider_task_info = PolicySpiderTaskInfo.query.filter_by(task_id=task_id).first()
+    if policy_spider_task_info.state < 0:
+        return json_response(msg='fail')
     if policy_spider_task_info.spider_type == 1:
         change_task_state(task_id, 1)
         with app.app_context():
             celery_start_spider1.delay(task_id)
-        return str(task_id)
+        return json_response(msg='success', task_id=str(task_id))
     elif policy_spider_task_info.spider_type == 2:
         change_task_state(task_id, 1)
         policy_spider_task_info = PolicySpiderTaskInfo.query.filter_by(task_id=task_id).first()
@@ -423,12 +441,12 @@ def start_spider1():
                          extension_1=policy_spider_task_info.extension_1)
         with app.app_context():
             celery_start_spider3.delay(task_id, info_dict)
-        return str(task_id)
+        return json_response(msg='success', task_id=str(task_id))
     elif policy_spider_task_info.spider_type == 3:
         change_task_state(task_id, 1)
         with app.app_context():
             celery_start_spider1.delay(task_id)
-        return str(task_id)
+        return json_response(msg='success', task_id=str(task_id))
     else:
         return json_response(msg='fail')
 
@@ -437,10 +455,13 @@ def start_spider1():
 @app.route('/api/celery/spider2')
 def start_spider2():
     task_id = int(request.args.get('task_id') or 0)
+    policy_spider_task_info = PolicySpiderTaskInfo.query.filter_by(task_id=task_id).first()
+    if policy_spider_task_info.state < 0:
+        return json_response(msg='fail')
     change_task_state(task_id, 2)
     with app.app_context():
         celery_start_spider2.delay(task_id)
-    return str(task_id)
+    return json_response(msg='success', task_id=str(task_id))
 
 
 # 爬虫阶段二补充采集接口
@@ -451,6 +472,19 @@ def start_spider2_add():
     with app.app_context():
         celery_start_spider2_add.delay(task_id)
     return str(task_id)
+
+
+# 数据解析启动接口
+@app.route('/api/celery/analysis')
+def data_analysis():
+    task_id = int(request.args.get('task_id') or 0)
+    policy_spider_task_info = PolicySpiderTaskInfo.query.filter_by(task_id=task_id).first()
+    if policy_spider_task_info.state < 4:
+        return json_response(msg='fail')
+    change_task_state(task_id, 5)
+    with app.app_context():
+        analysis_data.delay(task_id)
+    return json_response(msg='success', task_id=str(task_id))
 
 
 # # 查询数据采集规则的接口
@@ -486,10 +520,10 @@ def get_all_content(policy_spider_task_url, time_delay=5):
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get(start_url)
     time.sleep(int(time_delay))
-    if extension_1 is not None and extension_1 != '':
-        eval(extension_1)
     try:
         while True:
+            if extension_1 is not None and extension_1 != '':
+                eval(extension_1)
             content = driver.page_source
             content_list.append(content)
             driver.find_element_by_partial_link_text(rules_next_page).click()

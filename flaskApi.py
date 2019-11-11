@@ -99,10 +99,6 @@ def get_content(list_url, extension, time_delay=5):
     time.sleep(int(time_delay))
     if extension is not None and extension != '':
         eval(extension)
-    try:
-        driver.switch_to.frame(0)
-    except Exception as e:
-        print(e)
     content = driver.page_source
     print(content)
     driver.close()
@@ -168,6 +164,7 @@ def next_page_test():
             try:
                 driver.find_element_by_partial_link_text(rules_next_page).click()
                 time.sleep(time_delay)
+                print(driver.page_source)
                 return json_response(result=1, msg='success')
             except Exception as e:
                 print(e)
@@ -353,6 +350,7 @@ def spider_choice():
         policy_spider_task_info.url_head = data['url_head']
         db.session.add(policy_spider_task_info)
         db.session.commit()
+        change_task_state(task_id,0)
         return json_response(msg='success')
     else:
         return json_response(status_=405, msg='fail', error_description='Wrong request method!')
@@ -546,11 +544,14 @@ def get_all_content(policy_spider_task_url, time_delay=5):
     driver.get(start_url)
     time.sleep(int(time_delay))
     try:
+        if extension_1 is not None and extension_1 != '':
+            eval(extension_1)
         while True:
-            if extension_1 is not None and extension_1 != '':
-                eval(extension_1)
             content = driver.page_source
             content_list.append(content)
+            if(len(content_list)>50):
+                if(content_list[-1] == content_list[-2]):
+                    break
             driver.find_element_by_partial_link_text(rules_next_page).click()
             time.sleep(int(time_delay))
     except Exception as e:

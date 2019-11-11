@@ -96,7 +96,7 @@
         	url:"/api/celery/analysis?task_id="+task_id,
         	success:function(data){
 				//var obj = JSON.parse(data);
-				$("#state1").text("状态:任务"+data+"，数据解析成功启动");
+				$("#state1").text("状态:任务"+data['task_id']+"，数据解析成功启动");
         	},
         	error:function(jqXHR){
            		alert("发生错误："+ jqXHR.status);

@@ -23,14 +23,14 @@ mysql_db =cf.get(cf_mysql_name, 'mysql_db')
 mysql_host = cf.get(cf_mysql_name, 'mysql_host')
 mysql_port = cf.get(cf_mysql_name, 'mysql_port')
 mysql_user = cf.get(cf_mysql_name, 'mysql_user')
-mysql_passwd = cf.get(cf_mysql_name, 'mysql_passwd')
+mysql_password = cf.get(cf_mysql_name, 'mysql_password')
 
 
 #从mysql中取出一条url的任务，并返回一个任务字典
 def GetTask(id):
     task_dict = {}
     try:
-        db = pymysql.connect(mysql_host, mysql_user, mysql_passwd, mysql_db, port=int(mysql_port), charset="utf8", connect_timeout=300)
+        db = pymysql.connect(mysql_host, mysql_user, mysql_password, mysql_db, port=int(mysql_port), charset="utf8", connect_timeout=300)
         cursor = pymysql.cursors.SSCursor(db)
         select_sql = "SELECT task_id,type1,type2,type3,type4,type5,urls,rules_url,url_head" \
                      " FROM policy_spider_task_info WHERE task_id = %s LIMIT 1;"%id

@@ -34,8 +34,8 @@ class DatabasePipeline(object):
         mysql_host = cf.get(cf_mysql_name, 'mysql_host')
         mysql_port = cf.get(cf_mysql_name, 'mysql_port')
         mysql_user = cf.get(cf_mysql_name, 'mysql_user')
-        mysql_passwd = cf.get(cf_mysql_name, 'mysql_passwd')
-        self.mysql_conn = pymysql.connect(mysql_host, mysql_user, mysql_passwd, mysql_db, int(mysql_port), charset="utf8")
+        mysql_password = cf.get(cf_mysql_name, 'mysql_password')
+        self.mysql_conn = pymysql.connect(mysql_host, mysql_user, mysql_password, mysql_db, int(mysql_port), charset="utf8")
         self.mysql_cur = self.mysql_conn.cursor()
         #mongo
         cf_mongo_name = "MONGODB_TEST"
@@ -44,10 +44,10 @@ class DatabasePipeline(object):
         mongo_db = cf.get(cf_mongo_name, 'mongo_db')
         mongo_table = cf.get(cf_mongo_name, 'mongo_table')
         mongo_user = cf.get(cf_mongo_name, 'mongo_user')
-        mongo_passwd = cf.get(cf_mongo_name, 'mongo_passwd')
+        mongo_password = cf.get(cf_mongo_name, 'mongo_password')
         self.mongo_client = pymongo.MongoClient(host=mongo_host, port=int(mongo_port))
         self.db_auth = self.mongo_client.admin
-        self.db_auth.authenticate(mongo_user, mongo_passwd)
+        self.db_auth.authenticate(mongo_user, mongo_password)
         mongo_db = self.mongo_client[mongo_db]
         self.mongo_table = mongo_db[mongo_table]
 
@@ -57,8 +57,8 @@ class DatabasePipeline(object):
         redis_host = cf.get(cf_redis_name, 'redis_host')
         redis_port = cf.get(cf_redis_name, 'redis_port')
         #mysql_user = cf.get(cf_redis_name, 'mysql_user')
-        redis_passwd = cf.get(cf_redis_name, 'redis_passwd')
-        self.r = redis.StrictRedis(host=redis_host, port=int(redis_port), db=int(redis_db), password=redis_passwd)
+        redis_password = cf.get(cf_redis_name, 'redis_password')
+        self.r = redis.StrictRedis(host=redis_host, port=int(redis_port), db=int(redis_db), password=redis_password)
 
     def close_spider(self,spider):
         #mysql

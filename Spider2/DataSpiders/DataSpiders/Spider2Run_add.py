@@ -20,8 +20,8 @@ redis_db = cf.get(cf_redis_name, 'redis_db')
 redis_host = cf.get(cf_redis_name, 'redis_host')
 redis_port = cf.get(cf_redis_name, 'redis_port')
 # mysql_user = cf.get(cf_redis_name, 'mysql_user')
-redis_passwd = cf.get(cf_redis_name, 'redis_passwd')
-r = redis.StrictRedis(host=redis_host, port=int(redis_port), db=int(redis_db), password=redis_passwd)
+redis_password = cf.get(cf_redis_name, 'redis_password')
+r = redis.StrictRedis(host=redis_host, port=int(redis_port), db=int(redis_db), password=redis_password)
 
 cf_mysql_name = "MYSQL_TEST"
 # mysql
@@ -29,12 +29,11 @@ mysql_db = cf.get(cf_mysql_name, 'mysql_db')
 mysql_host = cf.get(cf_mysql_name, 'mysql_host')
 mysql_port = cf.get(cf_mysql_name, 'mysql_port')
 mysql_user = cf.get(cf_mysql_name, 'mysql_user')
-mysql_passwd = cf.get(cf_mysql_name, 'mysql_passwd')
+mysql_password = cf.get(cf_mysql_name, 'mysql_password')
 #每隔
 def mysql2redis(id):
 
-
-    mysql_conn = pymysql.connect(mysql_host, mysql_user, mysql_passwd, mysql_db, int(mysql_port), charset="utf8")
+    mysql_conn = pymysql.connect(mysql_host, mysql_user, mysql_password, mysql_db, int(mysql_port), charset="utf8")
     mysql_cur = mysql_conn.cursor()
     select_sql = "SELECT task_id,type1,type2,type3,type4,type5,url" \
                 " FROM policy_spider_log WHERE state = 0 AND "\

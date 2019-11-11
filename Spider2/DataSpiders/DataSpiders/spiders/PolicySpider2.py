@@ -28,7 +28,7 @@ class PolicySpider2(scrapy.Spider):
     redis_host = cf_database.get(cf_name,"redis_host")
     redis_port = cf_database.get(cf_name,"redis_port")
     redis_db = cf_database.get(cf_name,"redis_db")
-    redis_password = cf_database.get(cf_name,"redis_passwd")
+    redis_password = cf_database.get(cf_name,"redis_password")
     r = redis.StrictRedis(host=redis_host, port=redis_port, db=redis_db, password=redis_password)
 
     # 每次从redis中提取的二级url任务的条数

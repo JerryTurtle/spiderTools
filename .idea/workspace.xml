@@ -2,13 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d20086c6-5f40-470b-9aa7-a63fac284251" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/tools_generate_urls.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DatabaseConfig.ini" beforeDir="false" afterPath="$PROJECT_DIR$/DatabaseConfig.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/DatabaseConfig.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/DatabaseConfig.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/Spider1Run.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/Spider1Run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/spiders/PolicySpider1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/spiders/PolicySpider1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/DatabaseConfig.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/DatabaseConfig.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run_add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/spiders/PolicySpider2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/spiders/PolicySpider2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/DatabaseConfig.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/DatabaseConfig.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/Spider2Run.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/Spider2Run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_analysis/DataAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_analysis/DataAnalysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_analysis/DatabaseConfig.ini" beforeDir="false" afterPath="$PROJECT_DIR$/data_analysis/DatabaseConfig.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskApi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tools.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tools.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/note.sql" beforeDir="false" afterPath="$PROJECT_DIR$/note.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/spider_start.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/spider_start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tools_data_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tools_data_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,9 +37,9 @@
     <SUITE FILE_PATH="coverage/spiderTools$spider_chrome.coverage" NAME="spider_chrome Coverage Results" MODIFIED="1572398488120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/spiderTools$Spider2Run.coverage" NAME="Spider2Run Coverage Results" MODIFIED="1571725651301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders" />
     <SUITE FILE_PATH="coverage/spiderTools$AnalysisHtml.coverage" NAME="AnalysisHtml Coverage Results" MODIFIED="1571798071127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/spiderTools$flaskApi.coverage" NAME="flaskApi Coverage Results" MODIFIED="1572963274758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/spiderTools$flaskApi.coverage" NAME="flaskApi Coverage Results" MODIFIED="1573021682886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/spiderTools$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1571362183869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders" />
-    <SUITE FILE_PATH="coverage/spiderTools$test.coverage" NAME="test Coverage Results" MODIFIED="1572861648025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/spiderTools$test.coverage" NAME="test Coverage Results" MODIFIED="1573293320615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -46,41 +61,77 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskApi.py">
+        <entry file="file://$PROJECT_DIR$/templates/spider_start.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="700" column="32" selection-start-line="700" selection-start-column="12" selection-end-line="700" selection-end-column="32" />
-              <folding>
-                <element signature="e#101#160#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="297">
+              <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/tools.html">
+        <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+            <state relative-caret-position="243">
+              <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/tools_generate_urls.html">
+        <entry file="file://$PROJECT_DIR$/data_analysis/DataAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+            <state relative-caret-position="343">
+              <caret line="424" column="25" selection-start-line="424" selection-start-column="25" selection-end-line="424" selection-end-column="25" />
+              <folding>
+                <element signature="e#24#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/爬虫.md">
+        <entry file="file://$PROJECT_DIR$/database_config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1161">
+              <caret line="43" selection-start-line="4" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_analysis/DatabaseConfig.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1080">
+              <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/note.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-54">
+              <caret line="1" selection-start-line="1" selection-end-line="13" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DatabaseConfig.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../NetSarang Computer/6/Xftp/Temporary/mysql-flashback-priciple-and-practice.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="178">
-                <caret line="10" column="13" selection-end-line="15" />
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="-54">
+                <caret line="163" column="93" lean-forward="true" selection-start-line="163" selection-start-column="81" selection-end-line="163" selection-end-column="93" />
               </first_editor>
               <second_editor />
             </state>
@@ -88,61 +139,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/tools_data_test.html">
+        <entry file="file://$PROJECT_DIR$/templates/tools_spider_start.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-442">
-              <caret line="6" column="82" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="82" />
+            <state relative-caret-position="694">
+              <caret line="60" column="33" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
+        <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run_add.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="39" lean-forward="true" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/spiders/PolicySpider1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/Spider1Run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="56" column="36" lean-forward="true" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+            <state relative-caret-position="702">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -159,11 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>headers</find>
-      <find>excute_select_sql</find>
-      <find>forward.xdaili.cn</find>
-      <find>Exception</find>
-      <find>excute_delete_sql</find>
       <find>tools/data/test</find>
       <find>tools/data</find>
       <find>tools</find>
@@ -189,6 +193,11 @@
       <find>api/sp</find>
       <find>api/spider/</find>
       <find>celery</find>
+      <find>index</find>
+      <find>monitor</find>
+      <find>passwd</find>
+      <find>COOKIES_ENABLED</find>
+      <find>str</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,61 +206,61 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DataAnalysis.py" />
-        <option value="$PROJECT_DIR$/data_analysis/exts.py" />
-        <option value="$PROJECT_DIR$/exts.py" />
-        <option value="$PROJECT_DIR$/data_analysis/models.py" />
-        <option value="$PROJECT_DIR$/database_config.py" />
-        <option value="D:/programming/Anaconda3/Lib/site-packages/sqlalchemy/dialects/mysql/mysqlconnector.py" />
-        <option value="D:/programming/Anaconda3/Lib/site-packages/jparser/model.py" />
-        <option value="$PROJECT_DIR$/templates/macros.html" />
-        <option value="$PROJECT_DIR$/DatabaseConfig.ini" />
-        <option value="$PROJECT_DIR$/../Spider2/DataSpiders/DataSpiders/Spider2Run.py" />
         <option value="$PROJECT_DIR$/../Spider2/DataSpiders/DataSpiders/middlewares.py" />
         <option value="$PROJECT_DIR$/../Spider2/DataSpiders/DataSpiders/spiders/PolicySpider2.py" />
         <option value="$PROJECT_DIR$/readme.txt" />
         <option value="$PROJECT_DIR$/templates/start_spider1_tools.html" />
         <option value="$PROJECT_DIR$/templates/index_1.html" />
-        <option value="$PROJECT_DIR$/data_analysis/DatabaseConfig.ini" />
         <option value="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/GetUrl.py" />
         <option value="$PROJECT_DIR$/spider_chrome.py" />
-        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run.py" />
-        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/DatabaseConfig.ini" />
         <option value="$PROJECT_DIR$/templates/data_test_tools.html" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/templates/_macros.html" />
         <option value="$PROJECT_DIR$/templates/show_analysis_rules.html" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/note.sql" />
         <option value="$PROJECT_DIR$/init_database.sql" />
         <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/middlewares.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/templates/tools_urls_test_1.html" />
         <option value="$PROJECT_DIR$/templates/tools_urls_test_2.html" />
-        <option value="$PROJECT_DIR$/templates/tools_data_test.html" />
         <option value="$PROJECT_DIR$/templates/tools_sql.html" />
         <option value="$PROJECT_DIR$/templates/tools_next_page_test.html" />
         <option value="$PROJECT_DIR$/templates/show_urls.html" />
         <option value="$PROJECT_DIR$/templates/tools_show_urls.html" />
-        <option value="$PROJECT_DIR$/data_analysis/DataAnalysis.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/tools_urls_test.html" />
         <option value="$PROJECT_DIR$/templates/tools_spider_start.html" />
         <option value="$PROJECT_DIR$/templates/spider_choice.html" />
-        <option value="$PROJECT_DIR$/templates/spider_start.html" />
-        <option value="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/DatabaseConfig.ini" />
-        <option value="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/Spider1Run.py" />
         <option value="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/spiders/PolicySpider1.py" />
         <option value="D:/programming/Anaconda3/Lib/site-packages/pyspider/webui/webdav.py" />
         <option value="$USER_HOME$/Desktop/爬虫.md" />
         <option value="$PROJECT_DIR$/templates/tools_generate_urls.html" />
-        <option value="$PROJECT_DIR$/flaskApi.py" />
         <option value="$PROJECT_DIR$/templates/tools.html" />
+        <option value="$PROJECT_DIR$/../WeChat Files/a15730060461/FileStorage/File/2019-11/MongoDataMove.py" />
+        <option value="$PROJECT_DIR$/DatabaseConfig.ini" />
+        <option value="$PROJECT_DIR$/data_analysis/DatabaseConfig.ini" />
+        <option value="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/DatabaseConfig.ini" />
+        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/DatabaseConfig.ini" />
+        <option value="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/DatabaseConfig.ini" />
+        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run.py" />
+        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/spiders/PolicySpider2.py" />
+        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/pipelines.py" />
+        <option value="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/pipelines.py" />
+        <option value="$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/Spider1Run.py" />
+        <option value="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/Spider2Run.py" />
+        <option value="$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/pipelines.py" />
+        <option value="$PROJECT_DIR$/note.sql" />
+        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/settings.py" />
+        <option value="$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run_add.py" />
+        <option value="$PROJECT_DIR$/flaskApi.py" />
+        <option value="$PROJECT_DIR$/templates/tools_data_test.html" />
+        <option value="$PROJECT_DIR$/templates/spider_start.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/data_analysis/DataAnalysis.py" />
+        <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="3" />
     <option name="y" value="6" />
     <option name="width" value="1281" />
@@ -262,7 +271,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,12 +281,36 @@
             <path>
               <item name="spiderTools" type="b2602c69:ProjectViewProjectNode" />
               <item name="spiderTools" type="462c0819:PsiDirectoryNode" />
+              <item name="data_analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spiderTools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spiderTools" type="462c0819:PsiDirectoryNode" />
+              <item name="Spider1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spiderTools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spiderTools" type="462c0819:PsiDirectoryNode" />
+              <item name="Spider1" type="462c0819:PsiDirectoryNode" />
+              <item name="DataSpiders" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spiderTools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spiderTools" type="462c0819:PsiDirectoryNode" />
+              <item name="Spider1" type="462c0819:PsiDirectoryNode" />
+              <item name="DataSpiders" type="462c0819:PsiDirectoryNode" />
+              <item name="DataSpiders" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spiderTools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spiderTools" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -315,7 +347,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.flaskApi">
+  <component name="RunManager" selected="Python.test">
     <configuration name="AnalysisHtml" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="spiderTools" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -428,8 +460,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.flaskApi" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.flaskApi" />
         <item itemvalue="Python.DataAnalysis" />
         <item itemvalue="Python.spider_chrome" />
         <item itemvalue="Python.AnalysisHtml" />
@@ -451,12 +483,15 @@
       <workItem from="1572339739028" duration="37736000" />
       <workItem from="1572507758658" duration="15405000" />
       <workItem from="1572577709164" duration="16371000" />
-      <workItem from="1572843267261" duration="48418000" />
+      <workItem from="1572843267261" duration="50002000" />
+      <workItem from="1573003634316" duration="14752000" />
+      <workItem from="1573094803533" duration="7665000" />
+      <workItem from="1573287336961" duration="4987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="381040000" />
+    <option name="totallyTimeSpent" value="410028000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -472,18 +507,18 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.50341684" side_tool="true" weight="0.2586904" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49658313" visible="true" weight="0.196443" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49658313" visible="true" weight="0.26839128" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3290735" />
       <window_info anchor="bottom" id="Python Console" order="3" weight="0.3290735" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.24600638" />
+      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.24600638" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3290735" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5004042" side_tool="true" weight="0.2715655" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.2172524" />
-      <window_info anchor="bottom" id="Debug" order="9" sideWeight="0.4995958" visible="true" weight="0.17571884" />
+      <window_info anchor="bottom" id="Debug" order="9" sideWeight="0.4995958" weight="0.08945687" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3290735" />
@@ -499,147 +534,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run_add.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="62" column="37" lean-forward="true" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/DatabaseConfig.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DatabaseConfig.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/programming/Anaconda3/Lib/site-packages/flask_json.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider_chrome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding>
-            <element signature="e#25#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/programming/Anaconda3/Lib/site-packages/werkzeug/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="602" selection-start-line="602" selection-end-line="602" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/spiderTools/flaskApi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7425">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/_macros.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="25" column="70" lean-forward="true" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
-          <folding>
-            <element signature="e#944#952#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="27">
-            <caret line="1" column="8" lean-forward="true" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tools_monitor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init_database.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/macros.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/middlewares.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tools_urls_test_2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/middlewares.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="159" column="72" lean-forward="true" selection-start-line="159" selection-start-column="72" selection-end-line="159" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/programming/Anaconda3/Lib/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="1050" selection-start-line="1050" selection-end-line="1050" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="27" column="72" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -681,30 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_analysis/DataAnalysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="384" selection-start-line="384" selection-end-line="384" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_analysis/DatabaseConfig.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Spider3/DataSpiders/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -740,34 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/spider_start.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="99" column="14" lean-forward="true" selection-start-line="99" selection-start-column="14" selection-end-line="99" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tools_spider_start.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/DatabaseConfig.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/tmp3AD1.tmp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -786,51 +632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/Spider1Run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="56" column="36" lean-forward="true" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/spiders/PolicySpider1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/programming/Anaconda3/Lib/site-packages/sqlalchemy/sql/schema.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="420" selection-start-line="420" selection-end-line="420" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="39" lean-forward="true" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -851,20 +656,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/爬虫.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="178">
-            <caret line="10" column="13" selection-end-line="15" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tools_data_test.html">
+    <entry file="file://$PROJECT_DIR$/templates/tools.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="6" column="82" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="82" />
+        <state relative-caret-position="1026">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -875,20 +670,258 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/爬虫.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="270">
+            <caret line="10" column="13" selection-end-line="15" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/spiders/PolicySpider1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="27">
+            <caret line="1" column="8" lean-forward="true" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WeChat Files/a15730060461/FileStorage/File/2019-11/MongoDataMove.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/DatabaseConfig.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/DatabaseConfig.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="56" column="56" lean-forward="true" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/Spider2Run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="36" column="70" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="58" column="57" lean-forward="true" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/spiders/PolicySpider2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/middlewares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="36" column="70" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tools_data_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="51" column="30" lean-forward="true" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider3/DataSpiders/DataSpiders/DatabaseConfig.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider1/DataSpiders/DataSpiders/Spider1Run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1871">
+          <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/programming/Anaconda3/Lib/site-packages/jparser/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/flaskApi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="700" column="32" selection-start-line="700" selection-start-column="12" selection-end-line="700" selection-end-column="32" />
+        <state relative-caret-position="13176">
+          <caret line="509" column="49" selection-start-line="509" selection-start-column="49" selection-end-line="509" selection-end-column="49" />
           <folding>
             <element signature="e#101#160#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tools.html">
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+        <state relative-caret-position="1701">
+          <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1161">
+          <caret line="43" selection-start-line="4" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_analysis/DatabaseConfig.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider2/DataSpiders/DataSpiders/Spider2Run_add.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="1" selection-start-line="1" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatabaseConfig.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../NetSarang Computer/6/Xftp/Temporary/mysql-flashback-priciple-and-practice.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="-54">
+            <caret line="163" column="93" lean-forward="true" selection-start-line="163" selection-start-column="81" selection-end-line="163" selection-end-column="93" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tools_spider_start.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="694">
+          <caret line="60" column="33" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_analysis/DataAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="424" column="25" selection-start-line="424" selection-start-column="25" selection-end-line="424" selection-end-column="25" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/spider_start.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
         </state>
       </provider>
     </entry>

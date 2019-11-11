@@ -42,15 +42,18 @@
 		}else{
 			rules.rule_type = 2;
 		}
+		$("#result").text("");
 		var data = JSON.stringify(rules);
 		$.ajax({
 			method:"POST",
 			url:"/api/test/analysis_data",
 			data:data,
 			success:function (data) {
+			    alert("测试成功");
 				$("#result").text(data['result']);
 			},
 			error:function (jqXHR) {
+
 				alert("发生错误："+jqXHR.status);
 
 			}

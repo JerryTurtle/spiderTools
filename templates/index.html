@@ -59,6 +59,10 @@
           <td style="color: green">爬虫阶段1完成</td>
           {% elif i.state == 4 %}
           <td style="color: green">爬虫阶段2完成</td>
+          {% elif i.state == 5 %}
+          <td style="color: #007bff">数据处理运行中</td>
+          {% elif i.state == 6 %}
+          <td style="color: green">数据处理完成</td>
           {% endif %}
           <!--<td><p style="color: #007bff">详情页爬虫已启动</p></td>-->
       </tr>

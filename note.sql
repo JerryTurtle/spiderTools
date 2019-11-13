@@ -25,3 +25,9 @@ doc.dups.shift();
 db.getCollection('html_data_country').remove({_id: {$in: doc.dups}});
 })
 
+人民银行
+退役军人事务部
+科技部
+公安部
+审计署
+

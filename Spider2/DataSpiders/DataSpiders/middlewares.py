@@ -22,6 +22,9 @@ from scrapy.http import HtmlResponse
 from fake_useragent import UserAgent
 
 
+import urllib.parse
+
+
 class DataspidersSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
@@ -129,7 +132,7 @@ class ProcessAllExceptionMiddleware(object):
         # 处理状态码不为200且没发生异常的情况
         if str(response.status) != '200' and str(response.status) != '0':
             # 封装response
-            response = HtmlResponse(url=response.url, status = response.status, body=bytes(str("http_code_error"), encoding='utf-8'))
+            response = HtmlResponse(url=response.url, status=response.status, body=bytes(str("http_code_error"), encoding='utf-8'))
             print("###############")
             return response
         return response
@@ -159,41 +162,36 @@ class RandomUserAgentMiddlware(object):
 
     def process_request(self, request, spider):
         request.headers.setdefault("User-Agent", self.ua.random)
-        #request.meta['splash']['args']['User-Agent'] = self.ua.random
+        netloc = urllib.parse.urlparse(request.url)
+        request.headers['Host'] = netloc
+        request.headers['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,' \
+                                    'image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3'
 
 
 
 def generate_proxy_auth():
     import hashlib
     import time
-
     orderno = "ZF20191080074lV0fOf"
     secret = "ac66770b075947eca6cb2f09dc776d00"
-
-    ip = "forward.xdaili.cn"
-    port = "80"
-
-    ip_port = ip + ":" + port
-
     timestamp = str(int(time.time()))
-    string = ""
     string = "orderno=" + orderno + "," + "secret=" + secret + "," + "timestamp=" + timestamp
-
     string = string.encode()
-
     md5_string = hashlib.md5(string).hexdigest()
     sign = md5_string.upper()
-    # print(sign)
     auth = "sign=" + sign + "&" + "orderno=" + orderno + "&" + "timestamp=" + timestamp
     return auth
 
 
 class ProxyMiddleware(object):
-    def process_request(self, request,spider):
+    def process_request(self, request, spider):
+        scheme = urllib.parse.urlparse(request.url)
+        if scheme == 'https':
+            request.meta['proxy'] = "https://forward.xdaili.cn:80"
+        else:
+            request.meta['proxy'] = "http://forward.xdaili.cn:80"
         request.headers["Proxy-Authorization"] = generate_proxy_auth()
-        request.meta['proxy'] = "http://forward.xdaili.cn:80"
         request.headers["Connection"] = "keep-alive"
-        # request.headers["Connection"] = "keep-alive"
 
 
 

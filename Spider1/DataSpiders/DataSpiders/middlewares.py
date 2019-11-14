@@ -152,12 +152,11 @@ class MytestDownloaderMiddleware(object):
     # 进程请求方法改成用selenium请求
     def process_request(self, request, spider):
 
-        content = self.selenium_request(request.url);
+        content = self.selenium_request(request.url)
         if content.strip() != '':
             return HtmlResponse(request.url, encoding='utf-8', body=content, request=request)
         return None
         # return None
-        return HtmlResponse(request.url, encoding='utf-8', body=content, request=request)
 
         # selenium获取页面浏览器内容
 
@@ -169,12 +168,12 @@ class MytestDownloaderMiddleware(object):
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
-        #chrome_options.add_argument("--proxy-server=https://forward.xdaili.cn:80")
+        # chrome_options.add_argument("--proxy-server=https://forward.xdaili.cn:80")
         driver = webdriver.Chrome(chrome_options=chrome_options)
         driver.get(url)
         # driver.maximize_window();# 窗口最大化
         # 执行js滚动浏览器窗口到底部
-        #driver.execute_script(js)
+        # driver.execute_script(js)
         # time.sleep(5)  # 不加载图片的话，这个时间可以不要，等待JS执行
         # driver.get_screenshot_as_file("C:\\Users\\Administrator\\Desktop\\test.png")
         time.sleep(1)

@@ -15,6 +15,25 @@ import sys
 Model = declarative_base()
 
 
+class Experts(Model):
+    __tablename__ = 'experts'
+
+    id = Column(Integer, primary_key=True, unique=True)
+    name = Column(String(64))
+    sex = Column(Integer)
+    tel = Column(String(255))
+    phone_num = Column(String(255))
+    email = Column(String(64))
+
+    def __init__(self, name, id, sex, tel, phone_num, email):
+        self.id = id
+        self.sex = sex
+        self.tel = tel
+        self.phone_num = phone_num
+        self.email = email
+        self.name = name
+
+
 class PolicySpiderUrlInfo(Model):
     __tablename__ = 'policy_spider_url_info'
 
@@ -157,12 +176,12 @@ class DataAnalysis(object):
         # 创建DBSession类型:
         self.DBSession = sessionmaker(bind=engine)
 
-    def test_add(self):
+    def add(self, new_user):
         # 创建session对象:
         session = self.DBSession()
         # 创建新User对象:
         import datetime
-        new_user = PolicySpiderDataInfo(task_id=66666, url='66666', insert_time=datetime.datetime.now())
+        # new_user = PolicySpiderDataInfo(task_id=66666, url='66666', insert_time=datetime.datetime.now())
         # 添加到session:
         session.add(new_user)
         # 提交即保存到数据库:
@@ -420,7 +439,14 @@ class DatabaseConfig(object):
         return redis_config
 
 
+# if __name__ == "__main__":
+#     t = DataAnalysis()
+#     task_id = sys.argv[1]
+#     t.select_mongo_(task_id=task_id)
+
 if __name__ == "__main__":
-    t = DataAnalysis()
-    task_id = sys.argv[1]
-    t.select_mongo_(task_id=task_id)
+    d = DataAnalysis()
+    e1 = Experts(id=100000000, name='李晓红', tel='59300065', phone_num='13051217637', sex=0, email='')
+    e1 = Experts(id=100000000, name='李晓红', tel='59300065', phone_num='13051217637', sex=0, email='')
+    d.add(e1)
+

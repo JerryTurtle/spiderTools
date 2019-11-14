@@ -161,9 +161,7 @@ class RandomUserAgentMiddlware(object):
         return cls(crawler)
 
     def process_request(self, request, spider):
-        request.headers.setdefault("User-Agent", self.ua.random)
-        netloc = urllib.parse.urlparse(request.url)
-        request.headers['Host'] = netloc
+        request.headers['User-Agent'] = self.ua.random
         request.headers['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,' \
                                     'image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3'
 

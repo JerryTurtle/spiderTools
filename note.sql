@@ -26,8 +26,18 @@ db.getCollection('html_data_country').remove({_id: {$in: doc.dups}});
 })
 
 人民银行
-退役军人事务部
-科技部
+
 公安部
 审计署
 
+-- dealwith_matters;
+-- email_send_log;
+-- operation_flow_log;
+-- project_achievement;
+-- project_event;
+-- project_meet_advise;
+-- project_meet_person;
+-- pan_file;
+-- pan_folder;
+-- pan_share;
+-- task_check_history;
